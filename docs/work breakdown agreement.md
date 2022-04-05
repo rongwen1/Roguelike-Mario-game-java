@@ -37,3 +37,4 @@ All members will be responsible for testing the requirements they have been assi
 ## Signatures
 
 Ng Yen Kai: I accept this WBA
+Teh Rong Wen: I accept this WBA
