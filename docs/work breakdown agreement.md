@@ -39,3 +39,5 @@ All members will be responsible for testing the requirements they have been assi
 Teh Rong Wen: I accept this WBA
 
 Lim Seng Onn: I accept this WBA
+
+Ng Yen Kai: I accept this WBA
