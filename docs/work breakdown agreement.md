@@ -37,3 +37,5 @@ All members will be responsible for testing the requirements they have been assi
 ## Signatures
 
 Teh Rong Wen: I accept this WBA
+
+Lim Seng Onn: I accept this WBA
