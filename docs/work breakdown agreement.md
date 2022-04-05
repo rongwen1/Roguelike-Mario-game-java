@@ -6,7 +6,7 @@
 
 >Who will be responsible for producing each deliverable:
 
-Separate interaction and class diagrams for each requirement + design rationales for:
+Separate interaction(optional) and class diagrams for each requirement + design rationales for:
 
 - REQ1: by Teh Rong Wen (31882617)
 - REQ2: by Lim Seng Onn (32200250)
@@ -36,5 +36,4 @@ All members will be responsible for testing the requirements they have been assi
 
 ## Signatures
 
-Ng Yen Kai: I accept this WBA
 Teh Rong Wen: I accept this WBA
