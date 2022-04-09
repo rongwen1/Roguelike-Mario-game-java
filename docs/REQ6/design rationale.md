@@ -57,4 +57,7 @@ ToadConverseAction:
 - execute -> Player -> Actor hasCapability -> Item CapabilitySet / CapabilitySet -> Capable -> Status --> String
 
 Application:
-- GameMap -> addActor -> Toad
+- GameMap, Toad -> Location -> GameMap -> ActorLocationsIterator -> Location, Actor
+
+Wrench:
+- Item -> addCapability -> Status
