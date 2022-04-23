@@ -9,6 +9,11 @@ public class SuperMushroom extends MagicalItem{
     private static final int increaseHp = 50;
     private int effectTurn;
 
+    public SuperMushroom() {
+        super("Super Mushroom", '^', true);
+        this.addCapability(Status.SUPER_MUSHROOM_WILLBECHANGEDLATER);
+    }
+
     /***
      * Constructor.
      * @param name the name of this Item
