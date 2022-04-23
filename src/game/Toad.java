@@ -9,27 +9,20 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 public class Toad extends Actor {
 
-    /**
-     * Constructor.
-     *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
-     */
-    public Toad(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+    public Toad() {
+        super("Toad", 'O', 9999); // arbitrary amounts of health.
     }
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = super.allowableActions(otherActor, direction, map);
+        final ActionList actions = super.allowableActions(otherActor, direction, map);
         actions.add(new ToadConverseAction());
         return actions;
     }
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return new DoNothingAction();
+        return new DoNothingAction(); // Toad does not actively interact with the world.
     }
 
 }
