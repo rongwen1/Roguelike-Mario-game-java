@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 
+import java.util.List;
+
 /**
  * Class representing the Player.
  */
@@ -31,6 +33,13 @@ public class Player extends Actor  {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
+		////For testing. Check actor's capabilities every turn////
+		System.out.println("Actor's capabilities: ");
+		List<Enum<?>> status = this.capabilitiesList();
+		for (Enum<?> stat: status){
+			System.out.println(stat.toString());
+		}
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
