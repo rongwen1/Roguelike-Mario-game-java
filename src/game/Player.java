@@ -4,8 +4,11 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+
+import java.util.List;
 
 /**
  * Class representing the Player.
@@ -39,5 +42,14 @@ public class Player extends Actor  {
 	@Override
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
+	}
+
+	@Override //This returns allowableAction.
+	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+
+		List<Item> items = this.getInventory();  //This inventory contains all items picked up
+
+
+		return super.allowableActions(otherActor, direction, map);
 	}
 }
