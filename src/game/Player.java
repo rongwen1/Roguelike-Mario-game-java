@@ -35,6 +35,13 @@ public class Player extends Actor  {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
+		////For testing. Check actor's capabilities every turn////
+		System.out.println("Actor's capabilities: ");
+		List<Enum<?>> status = this.capabilitiesList();
+		for (Enum<?> stat: status){
+			System.out.println(stat.toString());
+		}
+
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
