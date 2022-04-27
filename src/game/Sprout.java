@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
@@ -60,7 +61,12 @@ public class Sprout extends Tree implements Jumpable{
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
-        return new ActionList(new JumpAction(this, location, direction));
+        if(location.containsAnActor()){
+            return new ActionList(new DoNothingAction());
+        }
+        else {
+            return new ActionList(new JumpAction(this, location, direction));
+        }
     }
     public String toString() {
         return "Sprout";
