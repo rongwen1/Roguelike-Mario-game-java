@@ -42,37 +42,31 @@ public class SuperMushroom extends MagicalItem{
             actor.removeItemFromInventory(this);
         }
 
-        //Remove the capabilities added to the actor by this item after 10 effect turns
-        if (effectTurn == 10){
-            //Remove capability of this item from the actor.  ////STILL NEED TO UPDATE////
-            List<Enum<?>> status = this.capabilitiesList();
-            for (Enum<?> stat: status){
-                actor.removeCapability(stat);
-            }
-            isActive = false;
-            //Remove the item from actor's inventory
-            actor.removeItemFromInventory(this);
-
-            System.out.println("Removed the capability of " + this.toString());
-        }
-
-        //Increment effect turn when item effect is active
-        if (isActive){
-            effectTurn += 1;
-            System.out.println("EFFECT TURN: " + effectTurn);
-        }
-
-
+        super.tick(currentLocation, actor);
     }
 
     @Override
-    public String run(Actor actor) {
+    public void consume(Actor actor) {
         //Increase max hp of the actor
         actor.increaseMaxHp(increaseHp);
+        //Add capability of this item to the actor
+        super.addCapabilityToActor(actor);
 
         //Update attributes
         effectTurn = 0;
 
-        return super.run(actor);
+    }
+
+    @Override
+    public boolean consumedTicker(Actor actor) {
+        boolean flag = false;
+        effectTurn += 1;
+
+        if (effectTurn == 10){
+            //Update flag
+            flag = true;
+        }
+
+        return flag;
     }
 }

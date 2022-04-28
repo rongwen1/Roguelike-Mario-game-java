@@ -16,6 +16,7 @@ import java.util.List;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
+	private final ConsumedItemManager consumedItemManager;
 
 	/**
 	 * Constructor.
@@ -27,6 +28,7 @@ public class Player extends Actor  {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		consumedItemManager = new ConsumedItemManager(this);
 	}
 
 	@Override
@@ -34,6 +36,9 @@ public class Player extends Actor  {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
+		//Ticker for ConsumedItemManager
+		consumedItemManager.consumedItemTicker();
 
 		////For testing. Check actor's capabilities every turn////
 		System.out.println("Actor's capabilities: ");
