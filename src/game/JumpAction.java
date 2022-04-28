@@ -1,7 +1,9 @@
 package game;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
@@ -25,19 +27,26 @@ public class JumpAction extends Action {
         String result = "";
         if(actor.hasCapability(Status.SUPER_MUSHROOM_WILLBECHANGEDLATER)){
             map.moveActor(actor, jumpableLocation);
-            result += actor + " jumps onto the " + direction + " " + jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")";
+            result += actor + " jumped onto the " + direction + " " + jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")";
         }
 
         else{
             if(Math.random() <= jumpable.chanceToJump()){
                 map.moveActor(actor, jumpableLocation);
-                result += actor + " jumps onto the " + direction + " " +jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")" ;
+                result += actor + " jumped onto the " + direction + " " +jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")" ;
 
             }
             else {
                 int damage = jumpable.damage();
                 actor.hurt(damage);
-                result += actor + " fails to jump onto the " + direction + " " + jumpable + " with " +damage +" damage";
+                if (!actor.isConscious()) {
+                    map.removeActor(actor);
+                }
+                else{
+                    result += actor + " failed to jump onto the " + direction + " " + jumpable + " with " +damage +" damage";
+
+                }
+
             }
         }
 

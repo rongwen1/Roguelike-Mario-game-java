@@ -65,7 +65,7 @@ public class Sapling extends Tree implements Jumpable{
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         if(location.containsAnActor()){
-            return new ActionList(new DoNothingAction());
+            return new ActionList();
         }
         else {
             return new ActionList(new JumpAction(this, location, direction));
