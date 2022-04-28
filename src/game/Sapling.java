@@ -26,7 +26,6 @@ public class Sapling extends Tree implements Jumpable{
 
     @Override
     public void tick(Location location) {
-        super.tick(location);
         //Increment turns
         turns += 1;
 
@@ -34,17 +33,19 @@ public class Sapling extends Tree implements Jumpable{
         Random r = new Random();
         int low = 1;
         int high = 10;
-        int result = r.nextInt(high-low) + low;   //Generate random number between 1 and 10 inclusive
+        int result = r.nextInt(high) + low;   //Generate random number between 1 and 10 inclusive
         if (result == 1) {
-            //Code to spawn coin
+            //Spawn coin
+            location.addItem(new Coin(20));
         }
 
         //Convert to mature after 10 turns
-        if(turns == 100){
+        if(turns == 1000){
             Mature mature = new Mature();
             location.setGround(mature);
         }*/
 
+        super.tick(location);
     }
 
     @Override

@@ -87,6 +87,10 @@ public class Application {
 
 
 			/*////////RW_TESTING////////
+			//Add ground
+			Mature sapling = new Mature();
+			gameMap.at(1,1).setGround(sapling);
+
 			//Add item
 			SuperMushroom superMushroom = new SuperMushroom("Super Mushroom", '^', true);
 			gameMap.at(41, 17).addItem(superMushroom);
