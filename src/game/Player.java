@@ -39,6 +39,13 @@ public class Player extends Actor  {
 
 		//Ticker for ConsumedItemManager
 		consumedItemManager.consumedItemTicker();
+		//If player has super mushroom effect ongoing, change the display character to M
+		if (this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+			this.setDisplayChar('M');
+		}
+		else if  (!this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+			this.setDisplayChar('m');
+		}
 
 		////For testing. Check actor's capabilities every turn////
 		System.out.println("Actor's capabilities: ");

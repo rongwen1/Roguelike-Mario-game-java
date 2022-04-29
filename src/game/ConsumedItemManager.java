@@ -30,9 +30,9 @@ public class ConsumedItemManager {
         //Stores ConsumableItem to be removed
         ArrayList<ConsumableItem> itemsToBeRemoved = new ArrayList<>();
 
-        //Tick consumed item. If item effect is over, consumedTicker will return true.
+        //Tick consumed item. If item effect is over, removeBuff will return true.
         for (ConsumableItem item: this.consumedItems) {
-            if (item.consumedTicker(this.actor)){
+            if (item.removeBuff(this.actor)){
                 itemsToBeRemoved.add(item);
             }
         }

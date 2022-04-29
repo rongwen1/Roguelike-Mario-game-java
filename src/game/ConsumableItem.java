@@ -11,5 +11,5 @@ public interface ConsumableItem {
 
     void removeItemFromInventory(Actor actor);
 
-    boolean consumedTicker(Actor actor);
+    boolean removeBuff(Actor actor);
 }

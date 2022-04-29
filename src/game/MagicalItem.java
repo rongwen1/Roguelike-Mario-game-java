@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MagicalItem extends Item implements ConsumableItem{
-    protected int turns;
     private boolean isInActorInventory;
 
     /***
@@ -20,7 +19,6 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
      */
     public MagicalItem(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
-        turns = 0;
         isInActorInventory = false;
     }
 
@@ -49,8 +47,6 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
 
     @Override
     public void tick(Location currentLocation) {
-        //Increment turns
-        turns += 1;
         //Item not in actor inventory
         isInActorInventory = false;
 
@@ -59,8 +55,6 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
 
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        //Increment turns
-        turns += 1;
         //Item in actor inventory
         isInActorInventory = true;
 

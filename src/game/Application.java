@@ -86,7 +86,7 @@ public class Application {
 			world.addGameMap(gameMap);
 
 
-			/*////////RW_TESTING////////
+			////////RW_TESTING////////
 			//Add ground
 			Mature sapling = new Mature();
 			gameMap.at(1,1).setGround(sapling);
@@ -96,19 +96,21 @@ public class Application {
 			gameMap.at(41, 17).addItem(superMushroom);
 			SuperMushroom superMushroom2= new SuperMushroom("Super Mushroom", '^', true);
 			gameMap.at(41, 18).addItem(superMushroom2);
+			PowerStar powerStar= new PowerStar();
+			gameMap.at(41, 16).addItem(powerStar);
 			//Add player
 			Actor mario = new Player("Player", 'm', 100);
-			world.addPlayer(mario, gameMap.at(42, 17));*/
+			world.addPlayer(mario, gameMap.at(42, 17));
 
 
 
 
-			Actor mario = new Player("Player", 'm', 100);
+			/*Actor mario = new Player("Player", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
 
-			gameMap.at(43, 10).addActor(new Toad());
+			gameMap.at(43, 10).addActor(new Toad());*/
 
 
 
