@@ -8,8 +8,6 @@ public class SuperMushroom extends MagicalItem{
 
     public SuperMushroom() {
         super("Super Mushroom", '^', true);
-        this.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
-        this.addCapability(Status.JUMP_FREELY);
     }
 
     /***
@@ -20,8 +18,6 @@ public class SuperMushroom extends MagicalItem{
      */
     public SuperMushroom(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
-        this.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
-        this.addCapability(Status.JUMP_FREELY);
     }
 
     @Override
@@ -29,8 +25,20 @@ public class SuperMushroom extends MagicalItem{
         //Increase max hp of the actor
         actor.increaseMaxHp(increaseHp);
         //Add capability of this item to the actor
-        super.addCapabilityToActor(actor);
+        this.addCapabilityToActor(actor);
 
+    }
+
+    @Override
+    public void addCapabilityToActor(Actor actor) {
+        actor.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
+        actor.addCapability(Status.JUMP_FREELY);
+    }
+
+    @Override
+    public void removeCapabilityFromActor(Actor actor) {
+        actor.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
+        actor.removeCapability(Status.JUMP_FREELY);
     }
 
     @Override

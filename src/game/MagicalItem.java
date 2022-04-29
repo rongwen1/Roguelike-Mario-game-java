@@ -23,24 +23,6 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
     }
 
     @Override
-    public void addCapabilityToActor(Actor actor) {
-        //Add capability of this item to the actor
-        List<Enum<?>> status = this.capabilitiesList();
-        for (Enum<?> stat: status){
-            actor.addCapability(stat);
-        }
-    }
-
-    @Override
-    public void removeCapabilityFromActor(Actor actor) {
-        //Remove capability of this item to the actor
-        List<Enum<?>> status = this.capabilitiesList();
-        for (Enum<?> stat: status){
-            actor.removeCapability(stat);
-        }
-    }
-
-    @Override
     public void removeItemFromInventory(Actor actor) {
         actor.removeItemFromInventory(this);
     }

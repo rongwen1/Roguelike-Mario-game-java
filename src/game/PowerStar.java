@@ -11,10 +11,6 @@ public class PowerStar extends MagicalItem{
 
     public PowerStar() {
         super("Power Star", '*', true);
-        this.addCapability(Status.POWER_STAR_EFFECT_ONGOING);
-        this.addCapability(Status.INVINSIBLE);
-        this.addCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
-        this.addCapability(Status.INSTANT_KILL_ENEMY);
         turns = 0;
     }
     /***
@@ -25,10 +21,6 @@ public class PowerStar extends MagicalItem{
      */
     public PowerStar(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
-        this.addCapability(Status.POWER_STAR_EFFECT_ONGOING);
-        this.addCapability(Status.INVINSIBLE);
-        this.addCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
-        this.addCapability(Status.INSTANT_KILL_ENEMY);
         turns = 0;
     }
 
@@ -57,11 +49,27 @@ public class PowerStar extends MagicalItem{
         //Increase max hp of the actor
         actor.increaseMaxHp(increaseHp);
         //Add capability of this item to the actor
-        super.addCapabilityToActor(actor);
+        this.addCapabilityToActor(actor);
 
         //Update effect turns
         effectTurns = 10;
 
+    }
+
+    @Override
+    public void addCapabilityToActor(Actor actor) {
+        actor.addCapability(Status.POWER_STAR_EFFECT_ONGOING);
+        actor.addCapability(Status.INVINSIBLE);
+        actor.addCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
+        actor.addCapability(Status.INSTANT_KILL_ENEMY);
+    }
+
+    @Override
+    public void removeCapabilityFromActor(Actor actor) {
+        actor.removeCapability(Status.POWER_STAR_EFFECT_ONGOING);
+        actor.removeCapability(Status.INVINSIBLE);
+        actor.removeCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
+        actor.removeCapability(Status.INSTANT_KILL_ENEMY);
     }
 
     @Override
