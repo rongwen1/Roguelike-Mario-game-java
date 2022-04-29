@@ -22,7 +22,7 @@ public class ConsumeAction extends Action {
         this.consumableItem.removeItemFromInventory(actor);
 
         //Return string to be printed
-        return this.consumableItem.toString();
+        return actor.toString() + " consumes " + consumableItem.toString();
 
     }
 

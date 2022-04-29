@@ -73,6 +73,11 @@ public class PowerStar extends MagicalItem{
             flag = true;
         }
 
+        //Output the remaining effect turns
+        if (!flag){
+            System.out.println(actor.toString() + " consumes " + this.toString() + " - " + effectTurns + " turns remaining");
+        }
+
         //Increment turns
         effectTurns -= 1;
 
