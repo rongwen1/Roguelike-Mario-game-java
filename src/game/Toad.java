@@ -17,10 +17,10 @@ public class Toad extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
         actions.add(new ToadConverseAction());
-        //if (otherActor.hasCapability(Status.BUY_ITEM)){
-            actions.add(new SellWrenchAction());
-            actions.add((new SellSuperMushroomAction()));
-        //}
+        actions.add(new SellWrenchAction());
+        actions.add((new SellSuperMushroomAction()));
+        actions.add(new SellPowerStarAction());
+
 
 
         return actions;

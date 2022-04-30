@@ -46,6 +46,14 @@ public class Player extends Actor  {
 		else if  (!this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
 			this.setDisplayChar('m');
 		}
+		// Print player's hp
+		System.out.println("Player's HP: " + printHp());
+		// Print wallet balance
+		System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
+
+		//
+//		for(Item item: getInventory()){
+//		System.out.println(item.toString());}
 
 		////For testing. Check actor's capabilities every turn////
 		System.out.println("Actor's capabilities: ");

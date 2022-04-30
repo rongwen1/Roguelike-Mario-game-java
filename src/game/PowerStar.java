@@ -4,14 +4,16 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 
-public class PowerStar extends MagicalItem{
+public class PowerStar extends MagicalItem implements TradableItem{
     private final int turns;
     private static final int increaseHp = 200;
     private int effectTurns;
+    private int price;
 
     public PowerStar() {
         super("Power Star", '*', true);
         turns = 0;
+        this.price = 600;
     }
     /***
      * Constructor.
@@ -22,6 +24,7 @@ public class PowerStar extends MagicalItem{
     public PowerStar(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
         turns = 0;
+        this.price = 600;
     }
 
     @Override
@@ -90,5 +93,10 @@ public class PowerStar extends MagicalItem{
         effectTurns -= 1;
 
         return flag;
+    }
+
+    @Override
+    public int getValue() {
+        return price;
     }
 }

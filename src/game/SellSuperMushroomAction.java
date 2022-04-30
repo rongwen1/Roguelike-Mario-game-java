@@ -10,7 +10,6 @@ public class SellSuperMushroomAction extends Action{
     @Override
     public String execute(Actor actor, GameMap map) {
         SuperMushroom superMushroom = new SuperMushroom("Super Mushroom", '^', false);//
-        //superMushroom.run(actor);
         if (superMushroom.getValue() <= WalletManager.getInstance().getWalletBalance(actor)) {
             WalletManager.getInstance().appendTradableItem(superMushroom);
             actor.addItemToInventory(superMushroom);
