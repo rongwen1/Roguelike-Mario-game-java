@@ -10,28 +10,18 @@ import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.ArrayList;
 
-public class Wall extends Ground implements Jumpable {
+public class Wall extends HighGround {
 
 	private int damage;
 	private double chanceToJump;
+	private final String NAME;
 
 	public Wall() {
-
 		super('#');
 		this.damage = 20;
 		this.chanceToJump = 0.8;
+		this.NAME = "Wall";
 
-	}
-
-	@Override
-	public boolean canActorEnter(Actor actor) {
-
-		if(actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)){
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
 
 	@Override
@@ -49,26 +39,7 @@ public class Wall extends Ground implements Jumpable {
 		return chanceToJump;
 	}
 
-
-	@Override
-	public ActionList allowableActions(Actor actor, Location location, String direction){
-
-		if(location.containsAnActor()){
-			return new ActionList();
-		}
-
-		else if(actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)){
-			location.setGround(new Dirt());
-			location.addItem(new Coin(5));
-			return new ActionList();
-		}
-		else {
-			return new ActionList(new JumpAction(this, location, direction));
-
-		}
-	}
-
 	public String toString() {
-		return "Wall";
+		return NAME;
 	}
 }

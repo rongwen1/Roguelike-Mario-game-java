@@ -7,16 +7,18 @@ import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Random;
 
-public class Sprout extends Tree implements Jumpable{
+public class Sprout extends Tree{
     private int turns;
     private int damage;
     private double chanceToJump;
+    private final String NAME;
 
     public Sprout() {
         super('+');
         turns = 0;
         this.damage = 10;
         this.chanceToJump = 0.9;
+        this.NAME = "Sprout";
     }
 
 
@@ -44,11 +46,6 @@ public class Sprout extends Tree implements Jumpable{
     }
 
     @Override
-    public boolean canActorEnter(Actor actor) {
-        return false;
-    }
-
-    @Override
     public int damage() {
         return damage;
     }
@@ -58,17 +55,8 @@ public class Sprout extends Tree implements Jumpable{
         return chanceToJump;
     }
 
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction){
-        if(location.containsAnActor()){
-            return new ActionList();
-        }
-        else {
-            return new ActionList(new JumpAction(this, location, direction));
-        }
-    }
     public String toString() {
-        return "Sprout";
+        return NAME;
     }
 
 }

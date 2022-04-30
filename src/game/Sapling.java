@@ -5,12 +5,14 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
+import javax.print.attribute.standard.MediaSize;
 import java.util.Random;
 
 public class Sapling extends Tree implements Jumpable{
     private int turns;
     private int damage;
     private double chanceToJump;
+    private final String NAME;
 
     /**
      * Constructor.
@@ -21,6 +23,7 @@ public class Sapling extends Tree implements Jumpable{
         turns = 0;
         this.damage = 20;
         this.chanceToJump = 0.8;
+        this.NAME = "Sapling";
     }
 
 
@@ -49,11 +52,6 @@ public class Sapling extends Tree implements Jumpable{
     }
 
     @Override
-    public boolean canActorEnter(Actor actor) {
-        return false;
-    }
-
-    @Override
     public int damage() {
         return damage;
     }
@@ -63,18 +61,8 @@ public class Sapling extends Tree implements Jumpable{
         return chanceToJump;
     }
 
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction){
-        if(location.containsAnActor()){
-            return new ActionList();
-        }
-        else {
-            return new ActionList(new JumpAction(this, location, direction));
-        }
-    }
-
     public String toString() {
-        return "Sapling";
+        return NAME;
     }
 
 }
