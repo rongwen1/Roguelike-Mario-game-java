@@ -37,6 +37,7 @@ public class Player extends Actor  {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
+
 		//Ticker for ConsumedItemManager
 		consumedItemManager.consumedItemTicker();
 		//If player has super mushroom effect ongoing, change the display character to M
