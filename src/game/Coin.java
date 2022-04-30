@@ -44,7 +44,6 @@ public class Coin extends Item implements Resettable{
 
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
-        //WalletManager.getInstance().appendTradableItem(this);
         return super.getPickUpAction(actor);
     }
 
