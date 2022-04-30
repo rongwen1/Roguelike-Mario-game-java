@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.positions.Location;
 
 public class SuperMushroom extends MagicalItem implements TradableItem{
     private static final int increaseHp = 50;
-    private int price;
+    private final int price;
 
     public SuperMushroom() {
         super("Super Mushroom", '^', true);
@@ -25,30 +25,32 @@ public class SuperMushroom extends MagicalItem implements TradableItem{
 
     @Override
     public void consume(Actor actor) {
+        //set buffed actor
+        super.consume(actor);
         //Increase max hp of the actor
         actor.increaseMaxHp(increaseHp);
         //Add capability of this item to the actor
-        this.addCapabilityToActor(actor);
+        this.addCapabilityToActor();
 
     }
 
     @Override
-    public void addCapabilityToActor(Actor actor) {
-        actor.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
-        actor.addCapability(Status.JUMP_FREELY);
+    public void addCapabilityToActor() {
+        buffedActor.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
+        buffedActor.addCapability(Status.JUMP_FREELY);
     }
 
     @Override
-    public void removeCapabilityFromActor(Actor actor) {
-        actor.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
-        actor.removeCapability(Status.JUMP_FREELY);
+    public void removeCapabilityFromActor() {
+        buffedActor.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
+        buffedActor.removeCapability(Status.JUMP_FREELY);
     }
 
     @Override
-    public boolean removeBuff(Actor actor) {
+    public boolean removeBuff() {
         boolean flag = false;
 
-        if (!actor.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+        if (!buffedActor.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
             //Update flag
             flag = true;
         }

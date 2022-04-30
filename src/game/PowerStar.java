@@ -49,10 +49,12 @@ public class PowerStar extends MagicalItem implements TradableItem{
 
     @Override
     public void consume(Actor actor) {
+        //Set buffed actor
+        super.consume(actor);
         //Increase max hp of the actor
         actor.increaseMaxHp(increaseHp);
         //Add capability of this item to the actor
-        this.addCapabilityToActor(actor);
+        this.addCapabilityToActor();
 
         //Update effect turns
         effectTurns = 10;
@@ -60,23 +62,23 @@ public class PowerStar extends MagicalItem implements TradableItem{
     }
 
     @Override
-    public void addCapabilityToActor(Actor actor) {
-        actor.addCapability(Status.POWER_STAR_EFFECT_ONGOING);
-        actor.addCapability(Status.INVINSIBLE);
-        actor.addCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
-        actor.addCapability(Status.INSTANT_KILL_ENEMY);
+    public void addCapabilityToActor() {
+        buffedActor.addCapability(Status.POWER_STAR_EFFECT_ONGOING);
+        buffedActor.addCapability(Status.INVINSIBLE);
+        buffedActor.addCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
+        buffedActor.addCapability(Status.INSTANT_KILL_ENEMY);
     }
 
     @Override
-    public void removeCapabilityFromActor(Actor actor) {
-        actor.removeCapability(Status.POWER_STAR_EFFECT_ONGOING);
-        actor.removeCapability(Status.INVINSIBLE);
-        actor.removeCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
-        actor.removeCapability(Status.INSTANT_KILL_ENEMY);
+    public void removeCapabilityFromActor() {
+        buffedActor.removeCapability(Status.POWER_STAR_EFFECT_ONGOING);
+        buffedActor.removeCapability(Status.INVINSIBLE);
+        buffedActor.removeCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
+        buffedActor.removeCapability(Status.INSTANT_KILL_ENEMY);
     }
 
     @Override
-    public boolean removeBuff(Actor actor) {
+    public boolean removeBuff() {
         boolean flag = false;
 
         if (effectTurns == 0){
@@ -86,7 +88,7 @@ public class PowerStar extends MagicalItem implements TradableItem{
 
         //Output the remaining effect turns
         if (!flag){
-            System.out.println(actor.toString() + " consumes " + this.toString() + " - " + effectTurns + " turns remaining");
+            System.out.println(buffedActor.toString() + " consumes " + this + " - " + effectTurns + " turns remaining");
         }
 
         //Increment turns

@@ -18,8 +18,8 @@ public class ConsumeAction extends Action {
         this.consumableItem.consume(actor);
         //Add ConsumableItem to ConsumedItemManager
         ConsumedItemManager.getInstance().addConsumableItem(this.consumableItem);
-        //Remove item from actor
-        this.consumableItem.removeItemFromInventory(actor);
+        //Remove item from actor inventory
+        this.consumableItem.removeItemFromInventory();
 
         //Return string to be printed
         return actor.toString() + " consumes " + consumableItem.toString();
