@@ -48,6 +48,9 @@ public class AttackAction extends Action {
         int damage = weapon.damage();
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
+        if (target instanceof Enemy) {
+            ((Enemy) target).behaviours.put(20, new FollowBehaviour(actor));
+        }
         if (!target.isConscious()) {
             result += System.lineSeparator() + actionOnDefeat.execute(target, map);
         }

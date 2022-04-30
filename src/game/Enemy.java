@@ -24,7 +24,12 @@ public abstract class Enemy extends Actor {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new AttackBehaviour(new DefeatAction()));
-//        this.behaviours.put(20, new FollowBehaviour());
+        this.behaviours.put(30, new WanderBehaviour());
+    }
+
+    public Enemy(String name, char displayChar, int hitPoints, Action defeatAction) {
+        super(name, displayChar, hitPoints);
+        this.behaviours.put(10, new AttackBehaviour(defeatAction));
         this.behaviours.put(30, new WanderBehaviour());
     }
 

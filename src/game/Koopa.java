@@ -5,7 +5,8 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 public class Koopa extends Enemy {
 
     public Koopa() {
-        super("Koopa", 'k', 100);
+        // DefeatAction is bypassed - if Koopa had droppable items, they will not be dropped
+        super("Koopa", 'k', 100, new DormantAction());
     }
 
     @Override

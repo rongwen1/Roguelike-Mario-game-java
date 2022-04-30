@@ -10,7 +10,6 @@ public class DormantAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         Location loc = map.locationOf(actor);
-        // DefeatAction is bypassed - if Koopa had droppable items, they will not be dropped
         map.removeActor(actor);
         loc.addActor(new DormantKoopa());
         return "Koopa has gone into hiding!";

@@ -49,7 +49,7 @@ We create a new `DormantKoopa` class in addition to `Koopa`, because both actors
 - wrench provides BREAKS_KOOPA_SHELL status/capability (also used in req6)
   - comparatively difficult to iterate items + capabilities
   - killing koopa is only allowed if this status exists
-- add another inheritance layer Emeny - share many of the same logic
+- add another inheritance layer Enemy - share many of the same logic
 - refactor AttackAction logic into DefeatAction - for reuse
 - refactor Goomba logic into Enemy - for reuse
 - Goomba.playTurn - HashMaps have no ordering, priority is useless
