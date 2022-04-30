@@ -22,6 +22,7 @@ public class JumpAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = "";
+        // player can jump with 100% success rate after consuming supermushroom
         if(actor.hasCapability(Status.JUMP_FREELY)){
             map.moveActor(actor, jumpableLocation);
             result += actor + " jumped onto the " + direction + " " + jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")";

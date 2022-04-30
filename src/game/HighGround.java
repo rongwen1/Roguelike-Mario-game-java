@@ -13,7 +13,7 @@ public abstract class HighGround extends Ground implements Jumpable {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-
+		// Player can walk to the high ground, no need to jump after consuming power star
         if(actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)){
             return true;
         }
