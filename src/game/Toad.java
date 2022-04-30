@@ -17,27 +17,22 @@ public class Toad extends Actor {
         super("Toad", 'O', 9999); // arbitrary amounts of health.
         tradableItems = new ArrayList<>();
         items = new ArrayList<>();
-
-        tradableItems.add(new SuperMushroom());
-        tradableItems.add(new PowerStar());
-        items.add(new SuperMushroom());
-        items.add(new PowerStar());
+        tradableItems.add(new SuperMushroom("Super Mushroom", '^', false));
+        tradableItems.add(new PowerStar("Power Star", '*', false));
+        tradableItems.add((new Wrench()));
+        items.add(new SuperMushroom("Super Mushroom", '^', false));
+        items.add(new PowerStar("Power Star", '*', false));
+        items.add(new Wrench());
     }
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
         actions.add(new ToadConverseAction());
-        //actions.add(new SellWrenchAction());
 
         for (int i = 0; i < items.size(); i++){
             actions.add(new TradeAction(items.get(i), tradableItems.get(i)));
         }
-
-        //actions.add((new SellSuperMushroomAction()));
-        //actions.add(new SellPowerStarAction());
-
-
 
         return actions;
     }

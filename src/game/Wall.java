@@ -50,6 +50,7 @@ public class Wall extends Ground implements Jumpable {
 		if(location.containsAnActor()){
 			return new ActionList();
 		}
+
 		else {
 			return new ActionList(new JumpAction(this, location, direction));
 

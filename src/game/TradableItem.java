@@ -6,8 +6,6 @@ public interface TradableItem {
 
     int getValue();
 
-    //String bought(TradableItem item, Actor by, Actor From);
-
     default void addToWalletManager(){
         WalletManager.getInstance().appendTradableItem(this);
     }
