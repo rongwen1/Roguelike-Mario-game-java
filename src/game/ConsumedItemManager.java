@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 
 import java.util.ArrayList;
 
-public class ConsumedItemManager {
+public class ConsumedItemManager implements Resettable{
     private final ArrayList<ConsumableItem> consumedItems;
     /**
      * Instance of ConsumedItemManager
@@ -13,6 +13,7 @@ public class ConsumedItemManager {
 
     private ConsumedItemManager(){
         consumedItems = new ArrayList<>();
+        this.registerInstance();
     }
 
     public static ConsumedItemManager getInstance(){
@@ -53,4 +54,19 @@ public class ConsumedItemManager {
         }
     }
 
+    @Override
+    public void resetInstance() {
+        //Iterate through consumed items
+        for (ConsumableItem item: this.consumedItems){
+            //Remove capability from actor
+            item.removeCapabilityFromActor();
+            //Remove item from consumedItems list
+            this.consumedItems.remove(item);
+        }
+    }
+
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
+    }
 }
