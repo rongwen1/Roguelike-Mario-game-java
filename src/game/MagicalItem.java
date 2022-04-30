@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MagicalItem extends Item implements ConsumableItem{
-    protected static boolean isActive;
-    protected int turns;
+    private boolean isInActorInventory;
 
     /***
      * Constructor.
@@ -20,24 +19,26 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
      */
     public MagicalItem(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
-        turns = 0;
-        isActive = false;
+        isInActorInventory = false;
+    }
+
+    @Override
+    public void removeItemFromInventory(Actor actor) {
+        actor.removeItemFromInventory(this);
     }
 
     @Override
     public void tick(Location currentLocation) {
-        //If the actor consumes item from the ground, remove this item from the ground
-        if (isActive){
-            currentLocation.removeItem(this);
-        }
+        //Item not in actor inventory
+        isInActorInventory = false;
 
         super.tick(currentLocation);
     }
 
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        //Increment turns
-        turns += 1;
+        //Item in actor inventory
+        isInActorInventory = true;
 
         super.tick(currentLocation, actor);
     }
@@ -45,48 +46,11 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
     @Override
     public List<Action> getAllowableActions() {
         List<Action> actionList = new ArrayList<Action>();
-        if (!isActive){
+        if (isInActorInventory){
             actionList.add(new ConsumeAction(this));
             return actionList;
         }
 
         return super.getAllowableActions();
-    }
-
-    @Override
-    public String run(Actor actor) {
-        //Add capability of this item to the actor
-        List<Enum<?>> status = this.capabilitiesList();
-        for (Enum<?> stat: status){
-            actor.addCapability(stat);
-        }
-
-        //Update attributes
-        isActive = true;
-
-        /*
-        If actor consumes item from the ground, the item will be stored inside actor's inventory.
-        At the tick(Location) method above, it removes item from the ground when actor has consumed it.
-        By doing this, it can count the number of effect turns after item is consumed. Then inside the
-        tick() method, capabilities can be removed from the actor after item effect wears off.
-         */
-        //Checks if the actor has this item in the inventory
-        boolean actorHasItem = false;
-        for (Item item: actor.getInventory()){
-            if (item == this){
-                actorHasItem = true;
-                break;
-            }
-        }
-        //If actor does not have this item in the inventory, add this item to the inventory.
-        if (!actorHasItem){
-            actor.addItemToInventory(this);
-        }
-        //After running the effect of the item, prevent the actor to perform pick/drop action of this item
-        this.togglePortability();
-
-        //Returns string to be printed
-        return (actor.toString() + " has consumed " + this.toString());
-
     }
 }

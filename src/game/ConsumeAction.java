@@ -14,9 +14,15 @@ public class ConsumeAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        String result = this.consumableItem.run(actor);
+        //run consume method
+        this.consumableItem.consume(actor);
+        //Add ConsumableItem to ConsumedItemManager
+        ConsumedItemManager.getInstance().addConsumableItem(this.consumableItem);
+        //Remove item from actor
+        this.consumableItem.removeItemFromInventory(actor);
+
         //Return string to be printed
-        return result;
+        return actor.toString() + " consumes " + consumableItem.toString();
 
     }
 

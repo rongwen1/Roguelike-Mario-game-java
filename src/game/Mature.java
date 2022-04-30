@@ -26,18 +26,20 @@ public class Mature extends Tree implements Jumpable{
 
     @Override
     public void tick(Location location) {
-        super.tick(location);
+        int low;
+        int high;
+        int result;
+        Random r = new Random();
+
         //Increment turns
         turns += 1;
 
         /*//15% chance to spawn Koopa from Sprout
-        Random r = new Random();
-        int low = 1;
-        int high = 101;   //Exclusive
-        int result = r.nextInt(high-low) + low;   //Generate random number between 1 and 101 Exclusive
+        low = 1;
+        high = 100;
+        result = r.nextInt(high) + low;   //Generate random number between 1 and 100 inclusive
         if (result <= 15 && location.getActor() == null) {
-            //Koopa koopa = new Koopa();
-            //location.addActor(koopa);
+            location.addActor(new Koopa());
         }
 
         //Grow Sprout in one of the surrounding fertile squares every 5 turn.
@@ -69,7 +71,7 @@ public class Mature extends Tree implements Jumpable{
             if (possibleX.size() > 0){   //If there is at least one surrounding fertile squares that is dirt
                 low = 0;
                 high = possibleX.size();
-                result = r.nextInt(high-low) + low;   //Generate random number between 0 and array size - 1
+                result = r.nextInt(high);   //Generate random number between 0 and array size - 1
 
                 int x = possibleX.get(result);
                 int y = possibleY.get(result);
@@ -79,17 +81,17 @@ public class Mature extends Tree implements Jumpable{
 
         }
 
-
         //20% chance to become dirt
         low = 1;
         high = 5;
-        result = r.nextInt(high-low) + low;   //Generate random number between 1 and 5 inclusive
+        result = r.nextInt(high) + low;   //Generate random number between 1 and 5 inclusive
         if (result == 1) {
             Dirt dirt = new Dirt();
             location.setGround(dirt);
         }*/
 
     }
+
     @Override
     public boolean canActorEnter(Actor actor) {
         return false;

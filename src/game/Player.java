@@ -16,7 +16,7 @@ import java.util.List;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
-	//private WalletManager walletManager = new WalletManager(this);
+	private final ConsumedItemManager consumedItemManager;
 
 	/**
 	 * Constructor.
@@ -28,6 +28,7 @@ public class Player extends Actor  {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		consumedItemManager = new ConsumedItemManager(this);
 	}
 
 	@Override
@@ -36,10 +37,15 @@ public class Player extends Actor  {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-		// Print player's hp
-		System.out.println("Player's HP: " + printHp());
-		// Print wallet balance
-		System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
+		//Ticker for ConsumedItemManager
+		consumedItemManager.consumedItemTicker();
+		//If player has super mushroom effect ongoing, change the display character to M
+		if (this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+			this.setDisplayChar('M');
+		}
+		else if  (!this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+			this.setDisplayChar('m');
+		}
 
 		////For testing. Check actor's capabilities every turn////
 		System.out.println("Actor's capabilities: ");
@@ -61,11 +67,8 @@ public class Player extends Actor  {
 	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 
 		List<Item> items = this.getInventory();  //This inventory contains all items picked up
+
+
 		return super.allowableActions(otherActor, direction, map);
-
 	}
-
-
-
-
 }

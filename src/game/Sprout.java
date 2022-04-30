@@ -30,12 +30,11 @@ public class Sprout extends Tree implements Jumpable{
         Random r = new Random();
         int low = 1;
         int high = 10;
-        int result = r.nextInt(high-low) + low;   //Generate random number between 1 and 10 inclusive
+        int result = r.nextInt(high) + low;   //Generate random number between 1 and 10 inclusive
         if (result == 1 && location.getActor() == null) {
             Goomba goomba = new Goomba();
             location.addActor(goomba);
         }
-
 
         //Convert to sapling after 10 turns
         if(turns == 100){

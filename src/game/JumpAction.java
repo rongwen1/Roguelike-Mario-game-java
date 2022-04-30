@@ -1,9 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
@@ -25,7 +23,7 @@ public class JumpAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = "";
-        if(actor.hasCapability(Status.SUPER_MUSHROOM_WILLBECHANGEDLATER)){
+        if(actor.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
             map.moveActor(actor, jumpableLocation);
             result += actor + " jumped onto the " + direction + " " + jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")";
         }
