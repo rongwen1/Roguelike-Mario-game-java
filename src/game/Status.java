@@ -10,4 +10,5 @@ public enum Status {
     SUPER_MUSHROOM_WILLBECHANGEDLATER,
     BREAKS_KOOPA_SHELL, // able to break Koopa's shell in its dormant state (eg. the wrench)
     POWER_STAR_EFFECT_ONGOING, // player has the "power star" effect for the next few turns
+
 }

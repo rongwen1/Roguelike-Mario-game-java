@@ -1,18 +1,25 @@
 package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropItemAction;
+import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.List;
 
-public class SuperMushroom extends MagicalItem{
+public class SuperMushroom extends MagicalItem implements TradableItem {
     private static final int increaseHp = 50;
     private int effectTurn;
+    private int price;
 
     public SuperMushroom() {
         super("Super Mushroom", '^', true);
         this.addCapability(Status.SUPER_MUSHROOM_WILLBECHANGEDLATER);
+        this.price = 400;
     }
+
+
 
     /***
      * Constructor.
@@ -23,6 +30,7 @@ public class SuperMushroom extends MagicalItem{
     public SuperMushroom(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
         this.addCapability(Status.SUPER_MUSHROOM_WILLBECHANGEDLATER);
+        this.price = 400;
     }
 
     @Override
@@ -75,4 +83,12 @@ public class SuperMushroom extends MagicalItem{
 
         return super.run(actor);
     }
+
+
+    @Override
+    public int getValue() {
+        return price;
+    }
+
+
 }

@@ -5,14 +5,16 @@ import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 
-public class Coin extends Item {
+public class Coin extends Item{
 
     private int value;
 
     public Coin(int value) {
         super("Coin",'$', true);
         this.value = value;
+
     }
+
 
     public int getValue() {
         return value;
@@ -21,6 +23,12 @@ public class Coin extends Item {
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
+    }
+
+    @Override
+    public PickUpItemAction getPickUpAction(Actor actor) {
+
+        return super.getPickUpAction(actor);
     }
 
     public String toString(){

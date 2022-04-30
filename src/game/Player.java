@@ -16,6 +16,7 @@ import java.util.List;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
+	//private WalletManager walletManager = new WalletManager(this);
 
 	/**
 	 * Constructor.
@@ -34,6 +35,11 @@ public class Player extends Actor  {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
+		// Print player's hp
+		System.out.println("Player's HP: " + printHp());
+		// Print wallet balance
+		System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
 		////For testing. Check actor's capabilities every turn////
 		System.out.println("Actor's capabilities: ");
@@ -55,8 +61,11 @@ public class Player extends Actor  {
 	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 
 		List<Item> items = this.getInventory();  //This inventory contains all items picked up
-
-
 		return super.allowableActions(otherActor, direction, map);
+
 	}
+
+
+
+
 }
