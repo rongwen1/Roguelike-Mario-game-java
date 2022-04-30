@@ -13,7 +13,7 @@ public class DefeatAction extends Action {
         ActionList dropActions = new ActionList();
         // drop all items
         for (Item item : actor.getInventory()) {
-//            dropActions.add(item.getDropAction(target));
+            dropActions.add(item.getDropAction(actor));
         }
         for (Action drop : dropActions) {
             drop.execute(actor, map);
@@ -25,7 +25,7 @@ public class DefeatAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "Defeat " + actor;
     }
 
 }

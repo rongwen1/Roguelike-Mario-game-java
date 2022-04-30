@@ -6,12 +6,13 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public abstract class Enemy extends Actor {
 
-    protected final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+    protected final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
+    protected final Action actionOnDefeat = new DefeatAction();
 
     /**
      * Constructor.
@@ -22,7 +23,9 @@ public abstract class Enemy extends Actor {
      */
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.behaviours.put(10, new WanderBehaviour());
+        this.behaviours.put(10, new AttackBehaviour(new DefeatAction()));
+//        this.behaviours.put(20, new FollowBehaviour());
+        this.behaviours.put(30, new WanderBehaviour());
     }
 
     /**
@@ -40,7 +43,7 @@ public abstract class Enemy extends Actor {
         ActionList actions = new ActionList();
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            actions.add(new AttackAction(this, direction));
+            actions.add(new AttackAction(this, direction, actionOnDefeat));
         }
         return actions;
     }

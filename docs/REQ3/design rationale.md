@@ -104,11 +104,11 @@ Enemy:
 Goomba:
 - extends Enemy
 - cons: add SuicideBehavior behavior
-- getIntrinsWep: override to add Punch
+- getIntrinsWep: override to add Kick
 
 Koopa:
 - extends Enemy
-- getIntrinsWep: override to add Kick
+- getIntrinsWep: override to add Punch
 - override allowableActions' AttackAction with DormantAction
 
 DormantKoopa:

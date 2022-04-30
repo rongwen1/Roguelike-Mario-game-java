@@ -9,7 +9,7 @@ public class Goomba extends Enemy {
 
     public Goomba() {
         super("Goomba", 'g', 50);
-        this.behaviours.put(123, new SuicideBehavior());
+        this.behaviours.put(1, new SuicideBehavior());
     }
 
     @Override
