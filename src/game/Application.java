@@ -98,6 +98,8 @@ public class Application {
 			gameMap.at(41, 18).addItem(superMushroom2);
 			PowerStar powerStar= new PowerStar();
 			gameMap.at(41, 16).addItem(powerStar);
+			PowerStar powerStar2= new PowerStar();
+			gameMap.at(41, 15).addItem(powerStar2);
 			Coin coin = new Coin(20);
 			gameMap.at(43,17).addItem(coin);
 			//Add player
