@@ -25,7 +25,13 @@ public class Wall extends Ground implements Jumpable {
 
 	@Override
 	public boolean canActorEnter(Actor actor) {
-		return false;
+
+		if(actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	@Override
@@ -51,12 +57,16 @@ public class Wall extends Ground implements Jumpable {
 			return new ActionList();
 		}
 
+		else if(actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)){
+			location.setGround(new Dirt());
+			location.addItem(new Coin(5));
+			return new ActionList();
+		}
 		else {
 			return new ActionList(new JumpAction(this, location, direction));
 
 		}
 	}
-
 
 	public String toString() {
 		return "Wall";
