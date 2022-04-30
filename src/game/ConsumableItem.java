@@ -5,11 +5,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 public interface ConsumableItem {
     void consume(Actor actor);
 
-    void addCapabilityToActor(Actor actor);
+    void addCapabilityToActor();
 
-    void removeCapabilityFromActor(Actor actor);
+    void removeCapabilityFromActor();
 
-    void removeItemFromInventory(Actor actor);
+    void removeItemFromInventory();
 
-    boolean removeBuff(Actor actor);
+    boolean removeBuff();
 }

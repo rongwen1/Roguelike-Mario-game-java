@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
+import javax.print.attribute.standard.MediaSize;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,6 +13,7 @@ public class Mature extends Tree implements Jumpable{
     private int turns;
     private int damage;
     private double chanceToJump;
+    private final String NAME;
 
     /**
      * Constructor.
@@ -22,6 +24,7 @@ public class Mature extends Tree implements Jumpable{
         turns = 0;
         this.damage = 30;
         this.chanceToJump = 0.7;
+        this.NAME = "Mature";
     }
 
     @Override
@@ -92,10 +95,6 @@ public class Mature extends Tree implements Jumpable{
 
     }
 
-    @Override
-    public boolean canActorEnter(Actor actor) {
-        return false;
-    }
 
     @Override
     public int damage() {
@@ -107,18 +106,9 @@ public class Mature extends Tree implements Jumpable{
         return chanceToJump;
     }
 
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction){
-        if(location.containsAnActor()){
-            return new ActionList();
-        }
-        else {
-            return new ActionList(new JumpAction(this, location, direction));
-        }
-    }
 
     public String toString() {
-        return "Mature";
+        return NAME;
     }
 
 }

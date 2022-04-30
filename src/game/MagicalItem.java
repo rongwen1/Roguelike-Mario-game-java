@@ -10,6 +10,7 @@ import java.util.List;
 
 public abstract class MagicalItem extends Item implements ConsumableItem{
     private boolean isInActorInventory;
+    protected Actor buffedActor;
 
     /***
      * Constructor.
@@ -23,8 +24,8 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
     }
 
     @Override
-    public void removeItemFromInventory(Actor actor) {
-        actor.removeItemFromInventory(this);
+    public void removeItemFromInventory() {
+        buffedActor.removeItemFromInventory(this);
     }
 
     @Override
@@ -52,5 +53,10 @@ public abstract class MagicalItem extends Item implements ConsumableItem{
         }
 
         return super.getAllowableActions();
+    }
+
+    @Override
+    public void consume(Actor actor) {
+        buffedActor = actor;
     }
 }
