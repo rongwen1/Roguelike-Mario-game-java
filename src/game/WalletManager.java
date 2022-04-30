@@ -32,7 +32,7 @@ public class WalletManager {
     }
 
     public int getWalletBalance(Actor actor){
-        walletBalance = 10000;
+        walletBalance = 1000;
 
         for(TradableItem item: getTradableItem()){
             walletBalance -= item.getValue();
