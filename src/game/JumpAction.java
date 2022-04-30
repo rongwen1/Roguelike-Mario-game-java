@@ -13,7 +13,6 @@ public class JumpAction extends Action {
     private String direction;
 
 
-
     public JumpAction(Jumpable jumpable, Location jumpableLocation, String direction){
         this.jumpable = jumpable;
         this.jumpableLocation = jumpableLocation;
@@ -28,20 +27,18 @@ public class JumpAction extends Action {
             result += actor + " jumped onto the " + direction + " " + jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")";
         }
 
-        else{
-            if(Math.random() <= jumpable.chanceToJump()){
+        else {
+            if (Math.random() <= jumpable.chanceToJump()) {
                 map.moveActor(actor, jumpableLocation);
-                result += actor + " jumped onto the " + direction + " " +jumpable +  " (" + jumpableLocation.x() +"," + jumpableLocation.y() + ")" ;
+                result += actor + " jumped onto the " + direction + " " + jumpable + " (" + jumpableLocation.x() + "," + jumpableLocation.y() + ")";
 
-            }
-            else {
+            } else {
                 int damage = jumpable.damage();
                 actor.hurt(damage);
                 if (!actor.isConscious()) {
                     map.removeActor(actor);
-                }
-                else{
-                    result += actor + " failed to jump onto the " + direction + " " + jumpable + " with " +damage +" damage";
+                } else {
+                    result += actor + " failed to jump onto the " + direction + " " + jumpable + " with " + damage + " damage";
 
                 }
 
