@@ -1,15 +1,10 @@
-package game;
+package game.grounds;
 
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
-import javax.print.attribute.standard.MediaSize;
-import java.util.ArrayList;
 import java.util.Random;
 
-public class Mature extends Tree implements Jumpable{
+public class Mature extends Tree {
     private int turns;
     private int damage;
     private double chanceToJump;
@@ -21,7 +16,7 @@ public class Mature extends Tree implements Jumpable{
      */
     public Mature() {
         super('T');
-        turns = 0;
+        turns = 1;
         this.damage = 30;
         this.chanceToJump = 0.7;
         this.NAME = "Mature";
@@ -33,9 +28,6 @@ public class Mature extends Tree implements Jumpable{
         int high;
         int result;
         Random r = new Random();
-
-        //Increment turns
-        turns += 1;
 
         /*//15% chance to spawn Koopa from Sprout
         low = 1;
@@ -92,6 +84,9 @@ public class Mature extends Tree implements Jumpable{
             Dirt dirt = new Dirt();
             location.setGround(dirt);
         }*/
+
+        //Increment turns
+        turns += 1;
 
     }
 

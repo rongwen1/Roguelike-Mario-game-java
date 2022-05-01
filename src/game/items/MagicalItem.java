@@ -1,14 +1,16 @@
-package game;
+package game.items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
+import game.ConsumableItem;
+import game.ConsumeAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MagicalItem extends Item implements ConsumableItem{
+public abstract class MagicalItem extends Item implements ConsumableItem {
     private boolean isInActorInventory;
     protected Actor buffedActor;
 

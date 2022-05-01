@@ -1,11 +1,6 @@
-package game;
+package game.grounds;
 
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
-
-import java.util.Random;
 
 public class Sprout extends Tree{
     private int turns;
@@ -15,7 +10,7 @@ public class Sprout extends Tree{
 
     public Sprout() {
         super('+');
-        turns = 0;
+        turns = 1;
         this.damage = 10;
         this.chanceToJump = 0.9;
         this.NAME = "Sprout";
@@ -24,9 +19,6 @@ public class Sprout extends Tree{
 
     @Override
     public void tick(Location location) {
-        super.tick(location);
-        //Increment turns
-        turns += 1;
 
         /*//10% chance to spawn Goomba from Sprout
         Random r = new Random();
@@ -43,6 +35,9 @@ public class Sprout extends Tree{
             Sapling sapling = new Sapling();
             location.setGround(sapling);
         }*/
+
+        //Increment turns
+        turns += 1;
     }
 
     @Override

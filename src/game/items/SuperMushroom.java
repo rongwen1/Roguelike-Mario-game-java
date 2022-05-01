@@ -1,9 +1,10 @@
-package game;
+package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
+import game.TradableItem;
 
-public class SuperMushroom extends MagicalItem implements TradableItem{
+public class SuperMushroom extends MagicalItem implements TradableItem {
     private static final int increaseHp = 50;
     private final int price;
 

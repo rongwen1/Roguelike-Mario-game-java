@@ -1,14 +1,15 @@
-package game;
+package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Resettable;
 
 import java.util.Currency;
 
-public class Coin extends Item implements Resettable{
+public class Coin extends Item implements Resettable {
 
     private int value;
     private Location location;

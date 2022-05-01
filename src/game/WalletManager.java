@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import game.items.Coin;
 
 import java.util.ArrayList;
 

@@ -8,6 +8,10 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.grounds.*;
+import game.items.Coin;
+import game.items.PowerStar;
+import game.items.SuperMushroom;
 
 /**
  * The main class for the Mario World game.

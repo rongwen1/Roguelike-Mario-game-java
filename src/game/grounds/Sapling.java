@@ -1,14 +1,8 @@
-package game;
+package game.grounds;
 
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
-import javax.print.attribute.standard.MediaSize;
-import java.util.Random;
-
-public class Sapling extends Tree implements Jumpable{
+public class Sapling extends Tree {
     private int turns;
     private int damage;
     private double chanceToJump;
@@ -20,7 +14,7 @@ public class Sapling extends Tree implements Jumpable{
      */
     public Sapling() {
         super('t');
-        turns = 0;
+        turns = 1;
         this.damage = 20;
         this.chanceToJump = 0.8;
         this.NAME = "Sapling";
@@ -29,8 +23,6 @@ public class Sapling extends Tree implements Jumpable{
 
     @Override
     public void tick(Location location) {
-        //Increment turns
-        turns += 1;
 
         /*//10% change to spawn coin (20$) on sapling
         Random r = new Random();
@@ -48,7 +40,9 @@ public class Sapling extends Tree implements Jumpable{
             location.setGround(mature);
         }*/
 
-        super.tick(location);
+        //Increment turns
+        turns += 1;
+
     }
 
     @Override
