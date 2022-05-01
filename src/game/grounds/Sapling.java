@@ -2,15 +2,21 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * <h1>Sapling</h1>
+ * Class that represents sapling. It inherits Tree class.
+ */
 public class Sapling extends Tree {
+    /**
+     * number of turns this ground have stayed in this world
+     */
     private int turns;
     private int damage;
     private double chanceToJump;
     private final String NAME;
 
     /**
-     * Constructor.
-     *
+     * Constructor for sapling
      */
     public Sapling() {
         super('t');
@@ -20,7 +26,10 @@ public class Sapling extends Tree {
         this.NAME = "Sapling";
     }
 
-
+    /**
+     * Called once per turn, so that grounds can experience the passage time.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
 

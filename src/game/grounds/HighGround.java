@@ -9,12 +9,26 @@ import game.JumpAction;
 import game.Jumpable;
 import game.Status;
 
+/**
+ * <h1>High Ground</h1>
+ * Abstract class that represents high ground.
+ */
 public abstract class HighGround extends Ground implements Jumpable {
 
+	/**
+	 * Constructor for high ground
+	 * @param displayChar
+	 */
     public HighGround(char displayChar){
         super(displayChar);
     }
 
+	/**
+	 * Impassable terrain, or terrain that is only passable if conditions are met.
+	 *
+	 * @param actor the Actor to check
+	 * @return true if actor can enter this terrain, false otherwise
+	 */
     @Override
     public boolean canActorEnter(Actor actor) {
 		// Player can walk to the high ground, no need to jump after consuming power star
@@ -26,6 +40,14 @@ public abstract class HighGround extends Ground implements Jumpable {
         }
     }
 
+	/**
+	 * Returns a new Action list.
+	 *
+	 * @param actor the Actor acting
+	 * @param location the current Location
+	 * @param direction the direction of the Ground from the Actor
+	 * @return a new collection of Actions
+	 */
 	@Override
 	public ActionList allowableActions(Actor actor, Location location, String direction){
 

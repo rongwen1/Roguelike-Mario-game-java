@@ -9,10 +9,19 @@ import game.Enemy;
  */
 public class Floor extends Ground {
 
+    /**
+     * Constructor for floor
+     */
     public Floor() {
         super('_');
     }
 
+    /**
+     * Impassable terrain, or terrain that is only passable if conditions are met.
+     *
+     * @param actor the Actor to check
+     * @return true if actor can enter this terrain, false otherwise
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         boolean allowEnterFloor = !(actor instanceof Enemy);

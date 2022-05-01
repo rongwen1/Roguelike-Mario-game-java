@@ -2,12 +2,22 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * <h1>Sprout</h1>
+ * Class that represents sprout. It inherits Tree class.
+ */
 public class Sprout extends Tree{
+    /**
+     * number of turns this ground have stayed in this world
+     */
     private int turns;
     private int damage;
     private double chanceToJump;
     private final String NAME;
 
+    /**
+     * Constructor for sprout
+     */
     public Sprout() {
         super('+');
         turns = 1;
@@ -16,7 +26,10 @@ public class Sprout extends Tree{
         this.NAME = "Sprout";
     }
 
-
+    /**
+     * Called once per turn, so that grounds can experience the passage time.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
 

@@ -9,7 +9,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
     private final int turns;
     private static final int increaseHp = 200;
     private int effectTurns;
-    private int price;
+    private final int price;
 
     public PowerStar() {
         super("Power Star", '*', true);

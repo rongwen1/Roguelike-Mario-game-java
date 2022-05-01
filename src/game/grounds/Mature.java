@@ -4,15 +4,21 @@ import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Random;
 
+/**
+ * <h1>Mature</h1>
+ * Class that represents mature tree. It inherits Tree class.
+ */
 public class Mature extends Tree {
+    /**
+     * number of turns this ground have stayed in this world
+     */
     private int turns;
     private int damage;
     private double chanceToJump;
     private final String NAME;
 
     /**
-     * Constructor.
-     *
+     * Constructor for mature
      */
     public Mature() {
         super('T');
@@ -22,6 +28,10 @@ public class Mature extends Tree {
         this.NAME = "Mature";
     }
 
+    /**
+     * Called once per turn, so that grounds can experience the passage time.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         int low;
