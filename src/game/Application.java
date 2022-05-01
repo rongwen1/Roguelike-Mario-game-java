@@ -2,11 +2,13 @@ package game;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.grounds.*;
 import game.items.Coin;
@@ -90,6 +92,8 @@ public class Application {
 			world.addGameMap(gameMap);
 
 
+
+
 			////////RW_TESTING////////
 			//Add ground
 			Mature sapling = new Mature();
@@ -122,7 +126,22 @@ public class Application {
 
 			;*/
 
-
+			//Add 5-7 sprouts randomly onto the map
+			Random r = new Random();
+			int sproutCount = r.nextInt(3) + 5;   //5-7 inclusive
+			int xMax = gameMap.getXRange().max();
+			int yMax = gameMap.getYRange().max();
+			int randomX, randomY;
+			for (int i = 0; i < sproutCount;){
+				randomX = r.nextInt(xMax + 1);   //Generate random number between 0 and xMax inclusive
+				randomY = r.nextInt(yMax + 1);   //Generate random number between 0 and yMax inclusive
+				Location currentLocation = gameMap.at(randomX, randomY);
+				if (currentLocation.getDisplayChar() == '.' //If it is a dirt
+						&& !currentLocation.containsAnActor()){   //If actor is not in current location
+					currentLocation.setGround(new Sprout());
+					i += 1;
+				}
+			}
 
 			world.run();
 

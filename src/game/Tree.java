@@ -1,6 +1,8 @@
 package game;
 
 import edu.monash.fit2099.engine.positions.Ground;
+import game.grounds.HighGround;
+
 import java.util.Random;
 
 public abstract class Tree extends HighGround implements Resettable{
