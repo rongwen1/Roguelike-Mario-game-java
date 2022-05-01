@@ -27,6 +27,10 @@ public class ConsumedItemManager implements Resettable{
         this.consumedItems.add(item);
     }
 
+    public void removeConsumableItem(ConsumableItem item){
+        this.consumedItems.remove(item);
+    }
+
     public void consumedItemTicker(){
         //Stores ConsumableItem to be removed
         ArrayList<ConsumableItem> itemsToBeRemoved = new ArrayList<>();
@@ -43,7 +47,7 @@ public class ConsumedItemManager implements Resettable{
             //Remove capability from actor
             item.removeCapabilityFromActor();
             //Remove item from consumedItems list
-            this.consumedItems.remove(item);
+            this.removeConsumableItem(item);
 
         }
 
