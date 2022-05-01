@@ -18,7 +18,8 @@ public class Coin extends Item implements Resettable {
         super("Coin",'$', true);
         this.value = value;
         this.registerInstance();
-        ResetManager.getInstance().appendResetInstance(this);
+        //I think we can just call this.registerInstance()//
+        //ResetManager.getInstance().appendResetInstance(this);
     }
 
     @Override
