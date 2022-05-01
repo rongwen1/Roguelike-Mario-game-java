@@ -16,7 +16,7 @@ public class Mature extends Tree {
      */
     public Mature() {
         super('T');
-        turns = 0;
+        turns = 1;
         this.damage = 30;
         this.chanceToJump = 0.7;
         this.NAME = "Mature";
@@ -28,9 +28,6 @@ public class Mature extends Tree {
         int high;
         int result;
         Random r = new Random();
-
-        //Increment turns
-        turns += 1;
 
         /*//15% chance to spawn Koopa from Sprout
         low = 1;
@@ -87,6 +84,9 @@ public class Mature extends Tree {
             Dirt dirt = new Dirt();
             location.setGround(dirt);
         }*/
+
+        //Increment turns
+        turns += 1;
 
     }
 
