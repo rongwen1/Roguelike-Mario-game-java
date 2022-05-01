@@ -7,12 +7,13 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import java.security.cert.CertPathValidatorException.Reason;
 import java.util.List;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor {
+public class Player extends Actor implements Resettable {
 
     private final Menu menu = new Menu();
     private final ConsumedItemManager consumedItemManager;
@@ -29,6 +30,7 @@ public class Player extends Actor {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
+        ResetManager.getInstance().appendResetInstance(this);
     }
 
     @Override
@@ -86,6 +88,12 @@ public class Player extends Actor {
 			actions.add(new ResetAction());
 		}
         return actions;
+    }
+
+    @Override
+    public void resetInstance() {
+        this.heal(9999); // TODO fix
+        this.capabilitiesList().forEach(this::removeCapability);
     }
 
 }

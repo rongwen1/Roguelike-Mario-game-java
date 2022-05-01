@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements Resettable {
 
     protected final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
     protected final Action actionOnDefeat = new DefeatAction();
@@ -25,12 +25,14 @@ public abstract class Enemy extends Actor {
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new AttackBehaviour(new DefeatAction()));
         this.behaviours.put(30, new WanderBehaviour());
+        ResetManager.getInstance().appendResetInstance(this);
     }
 
     public Enemy(String name, char displayChar, int hitPoints, Action defeatAction) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new AttackBehaviour(defeatAction));
         this.behaviours.put(30, new WanderBehaviour());
+        ResetManager.getInstance().appendResetInstance(this);
     }
 
     /**
@@ -45,7 +47,7 @@ public abstract class Enemy extends Actor {
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
+        ActionList actions = super.allowableActions(otherActor, direction, map);
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction, actionOnDefeat));
@@ -67,6 +69,11 @@ public abstract class Enemy extends Actor {
             }
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public void resetInstance() {
+//        new DefeatAction().execute(this);
     }
 
 }

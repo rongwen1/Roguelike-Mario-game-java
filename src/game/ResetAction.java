@@ -12,7 +12,6 @@ public class ResetAction extends Action {
         if (actor instanceof Player) {
             ((Player) actor).markResetAsDone();
         }
-        // TODO change uml to add ref to Player
         return "";
     }
 

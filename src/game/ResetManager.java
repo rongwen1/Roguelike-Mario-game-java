@@ -47,9 +47,7 @@ public class ResetManager {
      * `instanceof` all over the place.
      */
     public void run() {
-        for (Resettable reset : resettableList) {
-            reset.resetInstance();
-        }
+        resettableList.forEach(Resettable::resetInstance);
     }
 
     /**
