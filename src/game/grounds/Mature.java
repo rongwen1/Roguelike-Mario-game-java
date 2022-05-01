@@ -1,15 +1,10 @@
-package game;
+package game.grounds;
 
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
-import javax.print.attribute.standard.MediaSize;
-import java.util.ArrayList;
 import java.util.Random;
 
-public class Mature extends Tree implements Jumpable{
+public class Mature extends Tree {
     private int turns;
     private int damage;
     private double chanceToJump;
