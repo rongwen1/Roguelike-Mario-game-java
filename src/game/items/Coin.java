@@ -11,8 +11,20 @@ import java.util.Currency;
 
 public class Coin extends Item implements Resettable {
 
+    /**
+     * Value of coin
+     */
     private int value;
+
+    /**
+     * Location of coin
+     */
     private Location location;
+
+    /**
+     *
+     * @param value integer that representing value of coin
+     */
 
     public Coin(int value) {
         super("Coin",'$', true);

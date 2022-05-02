@@ -52,17 +52,27 @@ public class Sprout extends Tree{
         //Increment turns
         turns += 1;
     }
-
+    /**
+     *
+     * @return integer that representing the damage caused on player
+     */
     @Override
     public int damage() {
         return damage;
     }
 
+    /**
+     *
+     * @return double that representing the success rate
+     */
     @Override
     public double chanceToJump() {
         return chanceToJump;
     }
-
+    /**
+     *
+     * @return String representing name of the object
+     */
     public String toString() {
         return NAME;
     }
