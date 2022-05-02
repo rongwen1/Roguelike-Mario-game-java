@@ -15,7 +15,7 @@ public class ConsumedItemManager implements Resettable{
      */
     private final ArrayList<ConsumableItem> consumedItems;
     /**
-     * Instance of ConsumedItemManager
+     * A singleton consumed item manager instance
      */
     private static ConsumedItemManager instance;
 
@@ -29,7 +29,7 @@ public class ConsumedItemManager implements Resettable{
     }
 
     /**
-     * Getter for instance of ConsumedItemManager
+     * Get the singleton instance of consumed item manager
      * @return ConsumedItemManager
      */
     public static ConsumedItemManager getInstance(){
