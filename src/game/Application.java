@@ -115,7 +115,7 @@ public class Application {
 			Coin coin = new Coin(20);
 			gameMap.at(43,17).addItem(coin);
 			//Add player
-			Actor mario = new Player("Player", 'm', 100);
+			Actor mario = new Player("Mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 17));
 
 			gameMap.at(43, 10).addActor(new Toad());

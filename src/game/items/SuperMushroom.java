@@ -82,6 +82,11 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
             flag = true;
         }
 
+        //Output actor is invinsible
+        if (!flag){
+            System.out.println(buffedActor.toString() + " is INVINSIBLE");
+        }
+
         return flag;
     }
 
