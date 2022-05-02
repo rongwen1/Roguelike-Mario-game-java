@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.managers.ConsumedItemManager;
 import game.managers.ResetManager;
-import game.Status;
+import game.enums.Status;
 import game.managers.WalletManager;
 import game.actions.ResetAction;
 import game.interfaces.Resettable;
@@ -46,6 +46,7 @@ public class Player extends Actor implements Resettable {
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
+        didReset = false;
     }
 
     @Override
@@ -92,8 +93,6 @@ public class Player extends Actor implements Resettable {
 
     @Override //This returns allowableAction.
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-
-        List<Item> items = this.getInventory();  //This inventory contains all items picked up
 
         ActionList actions = super.allowableActions(otherActor, direction, map);
 		if (!didReset) {

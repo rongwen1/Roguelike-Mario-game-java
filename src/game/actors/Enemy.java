@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -6,20 +6,22 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.managers.ResetManager;
+import game.actions.AttackAction;
 import game.actions.DefeatAction;
 import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.interfaces.Resettable;
-
+import game.managers.ResetManager;
 import java.util.Map;
 import java.util.TreeMap;
 
 public abstract class Enemy extends Actor implements Resettable {
 
     protected final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
-    protected final Action actionOnDefeat = new DefeatAction();
+    protected Action actionOnSelfDefeat = new DefeatAction();
 
     /**
      * Constructor.
@@ -31,13 +33,6 @@ public abstract class Enemy extends Actor implements Resettable {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new AttackBehaviour(new DefeatAction()));
-        this.behaviours.put(30, new WanderBehaviour());
-        ResetManager.getInstance().appendResetInstance(this);
-    }
-
-    public Enemy(String name, char displayChar, int hitPoints, Action defeatAction) {
-        super(name, displayChar, hitPoints);
-        this.behaviours.put(10, new AttackBehaviour(defeatAction));
         this.behaviours.put(30, new WanderBehaviour());
         ResetManager.getInstance().appendResetInstance(this);
     }
@@ -57,9 +52,19 @@ public abstract class Enemy extends Actor implements Resettable {
         ActionList actions = super.allowableActions(otherActor, direction, map);
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            actions.add(new AttackAction(this, direction, actionOnDefeat));
+            actions.add(new AttackAction(this, direction, actionOnSelfDefeat));
         }
         return actions;
+    }
+
+    /**
+     * Swap to a new actor to follow.
+     *
+     * @param target the new actor to follow.
+     */
+    public void followNewActor(Actor target) {
+        // relies on the fact that behaviors is a map - 20 being the slot for a single FollowBehavior
+        behaviours.put(20, new FollowBehaviour(target));
     }
 
     /**

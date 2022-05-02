@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.Status;
+import game.enums.Status;
 import game.actions.DestroyShellAction;
 import game.items.SuperMushroom;
 
@@ -14,14 +14,14 @@ public class DormantKoopa extends Actor {
 
     public DormantKoopa() {
         super("Dormant Koopa", 'D', 9999); // arbitrary amounts of health.
-        this.getInventory().add(new SuperMushroom());
+        this.addItemToInventory(new SuperMushroom());
     }
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.BREAKS_KOOPA_SHELL)) {
-            actions.add(new DestroyShellAction());
+            actions.add(new DestroyShellAction(this));
         }
         return actions;
     }

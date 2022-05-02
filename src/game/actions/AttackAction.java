@@ -1,12 +1,11 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.behaviours.FollowBehaviour;
-
-
+import game.actors.Enemy;
+import game.enums.Status;
 import java.util.Random;
 
 /**
@@ -29,17 +28,17 @@ public class AttackAction extends Action {
      */
     protected Random rand = new Random();
 
-    private final Action actionOnDefeat;
+    private final Action actionOnTargetDefeat;
 
     /**
      * Constructor.
      *
      * @param target the Actor to attack
      */
-    public AttackAction(Actor target, String direction, Action actionOnDefeat) {
+    public AttackAction(Actor target, String direction, Action actionOnTargetDefeat) {
         this.target = target;
         this.direction = direction;
-        this.actionOnDefeat = actionOnDefeat;
+        this.actionOnTargetDefeat = actionOnTargetDefeat;
     }
 
     @Override
@@ -48,24 +47,25 @@ public class AttackAction extends Action {
         if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
             return actor + " misses " + target + ".";
         }
-        if (target.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+        if (target.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
             target.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
         }
         if (actor.hasCapability(Status.INSTANT_KILL_ENEMY)) {
-            return actor + " instantly kills " + target +"."
-                    + System.lineSeparator() + actionOnDefeat.execute(target, map);
+            return actor + " instantly kills " + target + "."
+                    + System.lineSeparator() + actionOnTargetDefeat.execute(target, map);
         }
-        if(target.hasCapability(Status.IMMUNITY)) {
+        if (target.hasCapability(Status.IMMUNITY)) {
             return target + "is invincible and takes no damage.";
         }
         int damage = weapon.damage();
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
         if (target instanceof Enemy) {
-            ((Enemy) target).behaviours.put(20, new FollowBehaviour(actor));
+            // have the attacker be followed by the enemy it attacks
+            ((Enemy) target).followNewActor(actor);
         }
         if (!target.isConscious()) {
-            result += System.lineSeparator() + actionOnDefeat.execute(target, map);
+            result += System.lineSeparator() + actionOnTargetDefeat.execute(target, map);
         }
         return result;
     }

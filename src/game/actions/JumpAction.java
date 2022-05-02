@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.interfaces.Jumpable;
-import game.Status;
+import game.enums.Status;
 
 /**
  * Special Action for jumping onto high ground.
