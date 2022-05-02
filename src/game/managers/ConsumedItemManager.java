@@ -88,6 +88,9 @@ public class ConsumedItemManager implements Resettable {
         }
     }
 
+    /**
+     * Called when reset game
+     */
     @Override
     public void resetInstance() {
         //Iterate through consumed items
@@ -99,6 +102,9 @@ public class ConsumedItemManager implements Resettable {
         }
     }
 
+    /**
+     * Add this into Reset Manager
+     */
     @Override
     public void registerInstance() {
         Resettable.super.registerInstance();
