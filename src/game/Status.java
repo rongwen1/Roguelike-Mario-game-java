@@ -9,7 +9,7 @@ public enum Status {
     TALL, // use this status to tell that current instance has "grown".
     SUPER_MUSHROOM_EFFECT_ONGOING, // player has "super mushroom" effect until it gets hit by enemy
     JUMP_FREELY, // player can walk to high ground without jumping
-    INVINSIBLE, // player does not get damaged
+    IMMUNITY, // player does not get damaged
     INSTANT_KILL_ENEMY, // successful attack will instantly kill enemies
     DESTROY_HIGHER_GROUND_TO_$5COIN,
     BREAKS_KOOPA_SHELL, // able to break Koopa's shell in its dormant state (eg. the wrench)

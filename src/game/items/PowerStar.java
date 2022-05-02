@@ -102,7 +102,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
     @Override
     public void addCapabilityToActor() {
         buffedActor.addCapability(Status.POWER_STAR_EFFECT_ONGOING);
-        buffedActor.addCapability(Status.INVINSIBLE);
+        buffedActor.addCapability(Status.IMMUNITY);
         buffedActor.addCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
         buffedActor.addCapability(Status.INSTANT_KILL_ENEMY);
     }
@@ -113,7 +113,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
     @Override
     public void removeCapabilityFromActor() {
         buffedActor.removeCapability(Status.POWER_STAR_EFFECT_ONGOING);
-        buffedActor.removeCapability(Status.INVINSIBLE);
+        buffedActor.removeCapability(Status.IMMUNITY);
         buffedActor.removeCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN);
         buffedActor.removeCapability(Status.INSTANT_KILL_ENEMY);
     }
