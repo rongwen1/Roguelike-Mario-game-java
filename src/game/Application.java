@@ -106,12 +106,8 @@ public class Application {
 			//Add item
 			SuperMushroom superMushroom = new SuperMushroom("Super Mushroom", '^', true);
 			gameMap.at(41, 17).addItem(superMushroom);
-			SuperMushroom superMushroom2= new SuperMushroom("Super Mushroom", '^', true);
-			gameMap.at(41, 18).addItem(superMushroom2);
 			PowerStar powerStar= new PowerStar();
 			gameMap.at(41, 16).addItem(powerStar);
-			PowerStar powerStar2= new PowerStar();
-			gameMap.at(41, 15).addItem(powerStar2);
 			Coin coin = new Coin(20);
 			gameMap.at(43,17).addItem(coin);
 			//Add player
@@ -126,8 +122,8 @@ public class Application {
 			//Actor mario = new Player("Player", 'm', 100);
 			//world.addPlayer(mario, gameMap.at(42, 10));
 			// FIXME: the Goomba should be generated from the Tree
-			gameMap.at(35, 10).addActor(new Goomba());
-			gameMap.at(35, 15).addActor(new Koopa());
+			//gameMap.at(35, 10).addActor(new Goomba());
+			//gameMap.at(35, 15).addActor(new Koopa());
 
 
 
