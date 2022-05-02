@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.items.Coin;
 import game.actions.JumpAction;
 import game.interfaces.Jumpable;
-import game.Status;
+import game.enums.Status;
 
 /**
  * <h1>High Ground</h1>

@@ -1,7 +1,7 @@
 package game.weapons;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Status;
+import game.enums.Status;
 import game.interfaces.TradableItem;
 
 public class Wrench extends WeaponItem implements TradableItem {

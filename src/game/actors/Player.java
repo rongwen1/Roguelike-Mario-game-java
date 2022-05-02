@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.managers.ConsumedItemManager;
 import game.managers.ResetManager;
-import game.Status;
+import game.enums.Status;
 import game.managers.WalletManager;
 import game.actions.ResetAction;
 import game.interfaces.Resettable;
@@ -69,9 +69,6 @@ public class Player extends Actor implements Resettable {
         // Print wallet balance
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
-        for (Item item : getInventory()) {
-            System.out.println(item.toString());
-        }
 
         ////For testing. Check actor's capabilities every turn////
         System.out.println("Actor's capabilities: ");
