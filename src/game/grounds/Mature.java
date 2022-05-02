@@ -1,7 +1,9 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Koopa;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,6 +18,8 @@ public class Mature extends Tree {
     private int damage;
     private double chanceToJump;
     private final String NAME;
+    private static final int SPAWN_KOOPA_CHANCE = 15;
+    private static final int CHANCE_TO_DIE = 20;
 
     /**
      * Constructor for mature
@@ -39,11 +43,9 @@ public class Mature extends Tree {
         int result;
         Random r = new Random();
 
-        /*//15% chance to spawn Koopa from Sprout
-        low = 1;
-        high = 100;
-        result = r.nextInt(high) + low;   //Generate random number between 1 and 100 inclusive
-        if (result <= 15 && location.getActor() == null) {
+        //15% chance to spawn Koopa from Sprout
+        result = r.nextInt(100) + 1;   //Generate random number between 1 and 100 inclusive
+        if (result <= SPAWN_KOOPA_CHANCE && location.getActor() == null) {
             location.addActor(new Koopa());
         }
 
@@ -87,13 +89,11 @@ public class Mature extends Tree {
         }
 
         //20% chance to become dirt
-        low = 1;
-        high = 5;
-        result = r.nextInt(high) + low;   //Generate random number between 1 and 5 inclusive
-        if (result == 1) {
+        result = r.nextInt(100) + 1;   //Generate random number between 1 and 100 inclusive
+        if (result <= CHANCE_TO_DIE) {
             Dirt dirt = new Dirt();
             location.setGround(dirt);
-        }*/
+        }
 
         //Increment turns
         turns += 1;

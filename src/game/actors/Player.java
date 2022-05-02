@@ -46,6 +46,7 @@ public class Player extends Actor implements Resettable {
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
+        didReset = false;
     }
 
     @Override
@@ -95,8 +96,6 @@ public class Player extends Actor implements Resettable {
 
     @Override //This returns allowableAction.
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-
-        List<Item> items = this.getInventory();  //This inventory contains all items picked up
 
         ActionList actions = super.allowableActions(otherActor, direction, map);
 		if (!didReset) {
