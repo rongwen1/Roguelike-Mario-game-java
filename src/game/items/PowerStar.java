@@ -134,6 +134,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
         //Output the remaining effect turns
         if (!flag){
             System.out.println(buffedActor.toString() + " consumes " + this + " - " + effectTurns + " turns remaining");
+            System.out.println(buffedActor.toString() + " is INVINSIBLE");
         }
 
         //Increment turns
