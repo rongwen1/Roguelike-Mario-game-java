@@ -22,12 +22,12 @@ public class ResetAction extends Action {
         }
         //Remove item from actor
         actor.removeItemFromInventory(this.item);
-        return "";
+        return "The game has been reset";
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "";
+        return "Reset the game (Can only be used once)";
     }
 
     @Override
