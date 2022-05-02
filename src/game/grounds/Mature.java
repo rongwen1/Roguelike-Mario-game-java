@@ -15,10 +15,25 @@ public class Mature extends Tree {
      * number of turns this ground have stayed in this world
      */
     private int turns;
+    /**
+     * Damage actor receives when it fails to jump to this ground
+     */
     private int damage;
-    private double chanceToJump;
+    /**
+     * Actor's chance to jump on this ground
+     */
+    private final double chanceToJump;
+    /**
+     * Name of this ground
+     */
     private final String NAME;
+    /**
+     * Chance to spawn koopa in %
+     */
     private static final int SPAWN_KOOPA_CHANCE = 15;
+    /**
+     * Chance to die (Become dirt) in %
+     */
     private static final int CHANCE_TO_DIE = 20;
 
     /**
