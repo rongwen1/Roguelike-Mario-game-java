@@ -59,7 +59,7 @@ public class Sapling extends Tree {
         }
 
         //Convert to mature after 10 turns
-        if(turns == 1000){
+        if(turns == 10){
             Mature mature = new Mature();
             location.setGround(mature);
         }

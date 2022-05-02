@@ -59,7 +59,7 @@ public class Sprout extends Tree{
         }
 
         //Convert to sapling after 10 turns
-        if(turns == 100){
+        if(turns == 10){
             Sapling sapling = new Sapling();
             location.setGround(sapling);
         }
