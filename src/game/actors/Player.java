@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.ResetTheGame;
 import game.actions.ResetAction;
 import game.enums.Status;
 import game.interfaces.Resettable;
@@ -46,6 +47,7 @@ public class Player extends Actor implements Resettable {
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
+        this.addItemToInventory(new ResetTheGame("ResetTheGame", 'R', false));
         didReset = false;
     }
 
@@ -95,9 +97,9 @@ public class Player extends Actor implements Resettable {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 
         ActionList actions = super.allowableActions(otherActor, direction, map);
-        if (!didReset) {
+        /*if (!didReset) {
             actions.add(new ResetAction());
-        }
+        }*/
         return actions;
     }
 
