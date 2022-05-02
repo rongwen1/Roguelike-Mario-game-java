@@ -1,6 +1,6 @@
 package game.grounds;
 
-import game.Resettable;
+import game.interfaces.Resettable;
 
 import java.util.Random;
 

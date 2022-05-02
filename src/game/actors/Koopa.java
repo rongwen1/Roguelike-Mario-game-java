@@ -1,6 +1,8 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Enemy;
+import game.actions.DormantAction;
 
 public class Koopa extends Enemy {
 

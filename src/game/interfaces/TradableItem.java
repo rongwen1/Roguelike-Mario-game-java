@@ -1,6 +1,6 @@
-package game;
+package game.interfaces;
 
-import edu.monash.fit2099.engine.actors.Actor;
+import game.managers.WalletManager;
 
 /**
  * <h1>TradableItem</h1>

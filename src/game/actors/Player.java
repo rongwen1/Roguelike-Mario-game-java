@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,7 +7,13 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import java.security.cert.CertPathValidatorException.Reason;
+import game.managers.ConsumedItemManager;
+import game.managers.ResetManager;
+import game.Status;
+import game.managers.WalletManager;
+import game.actions.ResetAction;
+import game.interfaces.Resettable;
+
 import java.util.List;
 
 /**

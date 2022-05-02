@@ -4,13 +4,11 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-import game.ConsumableItem;
-import game.ConsumeAction;
+import game.interfaces.ConsumableItem;
+import game.actions.ConsumeAction;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * <h1>Magical Item</h1>

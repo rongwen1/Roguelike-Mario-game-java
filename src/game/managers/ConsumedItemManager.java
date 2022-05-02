@@ -1,6 +1,7 @@
-package game;
+package game.managers;
 
-import edu.monash.fit2099.engine.actors.Actor;
+import game.interfaces.ConsumableItem;
+import game.interfaces.Resettable;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * Stores item that has been consumed by the actor. It manages and
  * checks if the item buff should be removed from the actor every turn.
  */
-public class ConsumedItemManager implements Resettable{
+public class ConsumedItemManager implements Resettable {
     /**
      * List of consumable item
      */

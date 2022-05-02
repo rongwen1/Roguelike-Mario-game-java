@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,6 +7,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.weapons.Wrench;
+import game.actions.ToadConverseAction;
+import game.actions.TradeAction;
+import game.interfaces.TradableItem;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 
@@ -17,6 +21,8 @@ public class Toad extends Actor {
     private ArrayList<Item> items;
     public Toad() {
         super("Toad", 'O', 9999); // arbitrary amounts of health.
+
+        //list of item that Toad sells
         tradableItems = new ArrayList<>();
         items = new ArrayList<>();
         tradableItems.add(new SuperMushroom("Super Mushroom", '^', false));

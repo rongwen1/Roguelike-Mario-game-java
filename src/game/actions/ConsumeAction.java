@@ -1,8 +1,10 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.interfaces.ConsumableItem;
+import game.managers.ConsumedItemManager;
 
 /**
  * <h1>Consume Action</h1>
