@@ -4,8 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.AttackAction;
-import game.Enemy;
+import game.actions.AttackAction;
+import game.actors.Enemy;
 import game.actors.Player;
 import game.interfaces.Behaviour;
 

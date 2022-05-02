@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.managers.ConsumedItemManager;
 import game.managers.ResetManager;
-import game.Status;
+import game.enums.Status;
 import game.managers.WalletManager;
 import game.actions.ResetAction;
 import game.interfaces.Resettable;
