@@ -34,11 +34,19 @@ public class Coin extends Item implements Resettable {
         resetGame = false;
     }
 
+    /**
+     * Called once per turn, so that this item can experience the passage time.
+     * @param currentLocation The location of the Ground
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         super.tick(currentLocation, actor);
     }
 
+    /**
+     * Called once per turn, so that this item can experience the passage time.
+     * @param currentLocation The location of the Ground
+     */
     @Override
     public void tick(Location currentLocation) {
         if (resetGame){

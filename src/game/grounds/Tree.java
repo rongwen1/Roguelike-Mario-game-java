@@ -27,6 +27,10 @@ public abstract class Tree extends HighGround implements Resettable {
         resetGame = false;
     }
 
+    /**
+     * Called once per turn, so that grounds can experience the passage time.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         if (resetGame){
