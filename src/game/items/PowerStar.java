@@ -142,6 +142,10 @@ public class PowerStar extends MagicalItem implements TradableItem {
         return flag;
     }
 
+    /**
+     *
+     * @return An integer representing price of this item
+     */
     @Override
     public int getValue() {
         return price;
