@@ -76,12 +76,12 @@ public class Player extends Actor implements Resettable {
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
 
-        /*////For testing. Check actor's capabilities every turn////
+        ////For testing. Check actor's capabilities every turn////
         System.out.println("Actor's capabilities: ");
         List<Enum<?>> status = this.capabilitiesList();
         for (Enum<?> stat : status) {
             System.out.println(stat.toString());
-        }*/
+        }
 
         // return/print the console menu
         return menu.showMenu(this, actions, display);
@@ -115,7 +115,7 @@ public class Player extends Actor implements Resettable {
     @Override
     public void resetInstance() {
         this.heal(9999); // TODO fix
-        this.capabilitiesList().forEach(this::removeCapability);
+        //this.capabilitiesList().forEach(this::removeCapability);
     }
 
 }

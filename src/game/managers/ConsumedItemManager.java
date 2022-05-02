@@ -93,17 +93,25 @@ public class ConsumedItemManager implements Resettable {
      */
     @Override
     public void resetInstance() {
+        //Stores ConsumableItem to be removed
+        ArrayList<ConsumableItem> itemsToBeRemoved = new ArrayList<>();
+
         //Iterate through consumed items
         for (ConsumableItem item: this.consumedItems){
+            //Add item into itemsToBeRemoved
+            itemsToBeRemoved.add(item);
+        }
+
+        for (ConsumableItem item: itemsToBeRemoved){
             //Remove capability from actor
             item.removeCapabilityFromActor();
             //Remove item from consumedItems list
-            this.consumedItems.remove(item);
+            this.removeConsumableItem(item);
         }
     }
 
     /**
-     * Add this into Reset Manager
+     *
      */
     @Override
     public void registerInstance() {
