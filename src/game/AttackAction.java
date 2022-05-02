@@ -45,6 +45,13 @@ public class AttackAction extends Action {
         if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
             return actor + " misses " + target + ".";
         }
+        if (actor.hasCapability(Status.INSTANT_KILL_ENEMY)) {
+            return actor + " instantly kills " + target +"."
+                    + System.lineSeparator() + actionOnDefeat.execute(target, map);
+        }
+        if(target.hasCapability(Status.INVINSIBLE)) {
+            return target + "is invincible and takes no damage.";
+        }
         int damage = weapon.damage();
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
