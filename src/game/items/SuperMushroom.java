@@ -12,7 +12,7 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
     /**
      * The amount of hp increase actor gets after it is consumed
      */
-    private static final int increaseHp = 50;
+    private static final int increaseMaxHp = 50;
     private final int price;
 
     /**
@@ -45,7 +45,7 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
         //set buffed actor
         super.consume(actor);
         //Increase max hp of the actor
-        actor.increaseMaxHp(increaseHp);
+        actor.increaseMaxHp(increaseMaxHp);
         //Add capability of this item to the actor
         this.addCapabilityToActor();
 

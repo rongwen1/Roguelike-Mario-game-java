@@ -87,7 +87,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
         //Set buffed actor
         super.consume(actor);
         //Increase max hp of the actor
-        actor.increaseMaxHp(increaseHp);
+        actor.heal(increaseHp);
         //Add capability of this item to the actor
         this.addCapabilityToActor();
 
