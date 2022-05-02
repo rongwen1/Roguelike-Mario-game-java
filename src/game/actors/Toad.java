@@ -7,18 +7,26 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.weapons.Wrench;
 import game.actions.ToadConverseAction;
 import game.actions.TradeAction;
 import game.interfaces.TradableItem;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
-
+import game.weapons.Wrench;
 import java.util.ArrayList;
 
+/**
+ * A friendly NPC with goods to trade.
+ */
 public class Toad extends Actor {
+
     private ArrayList<TradableItem> tradableItems;
+
     private ArrayList<Item> items;
+
+    /**
+     * Constructor.
+     */
     public Toad() {
         super("Toad", 'O', 9999); // arbitrary amounts of health.
 
@@ -38,7 +46,7 @@ public class Toad extends Actor {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
         actions.add(new ToadConverseAction());
 
-        for (int i = 0; i < items.size(); i++){
+        for (int i = 0; i < items.size(); i++) {
             actions.add(new TradeAction(items.get(i), tradableItems.get(i)));
         }
 

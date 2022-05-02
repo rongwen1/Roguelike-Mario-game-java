@@ -1,8 +1,8 @@
 package game.enums;
 
 /**
- * Use this enum class to give `buff` or `debuff`.
- * It is also useful to give a `state` to abilities or actions that can be attached-detached.
+ * Use this enum class to give `buff` or `debuff`. It is also useful to give a `state` to abilities
+ * or actions that can be attached-detached.
  */
 public enum Status {
     HOSTILE_TO_ENEMY, // use this status to be considered hostile towards enemy (e.g., to be attacked by enemy)
@@ -14,5 +14,4 @@ public enum Status {
     DESTROY_HIGHER_GROUND_TO_$5COIN,
     BREAKS_KOOPA_SHELL, // able to break Koopa's shell in its dormant state (eg. the wrench)
     POWER_STAR_EFFECT_ONGOING, // player has the "power star" effect for the next few turns
-
 }
