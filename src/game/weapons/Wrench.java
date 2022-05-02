@@ -10,6 +10,11 @@ import game.interfaces.TradableItem;
 public class Wrench extends WeaponItem implements TradableItem {
 
     /**
+     * Price of a single wrench item.
+     */
+    private static final int PRICE = 200;
+
+    /**
      * Constructor.
      */
     public Wrench() {
@@ -24,7 +29,7 @@ public class Wrench extends WeaponItem implements TradableItem {
      */
     @Override
     public int getValue() {
-        return 200;
+        return PRICE;
     }
 
 }

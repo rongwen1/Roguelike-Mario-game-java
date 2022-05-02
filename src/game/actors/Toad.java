@@ -20,8 +20,14 @@ import java.util.ArrayList;
  */
 public class Toad extends Actor {
 
+    /**
+     * Arraylist of TradableItem
+     */
     private ArrayList<TradableItem> tradableItems;
 
+    /**
+     * ArrayList of Item
+     */
     private ArrayList<Item> items;
 
     /**
