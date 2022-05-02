@@ -1,6 +1,9 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.items.Coin;
+
+import java.util.Random;
 
 /**
  * <h1>Sapling</h1>
@@ -14,6 +17,7 @@ public class Sapling extends Tree {
     private int damage;
     private double chanceToJump;
     private final String NAME;
+    private static final int SPAWN_COIN_CHANCE = 10;
 
     /**
      * Constructor for sapling
@@ -33,12 +37,10 @@ public class Sapling extends Tree {
     @Override
     public void tick(Location location) {
 
-        /*//10% change to spawn coin (20$) on sapling
+        //10% change to spawn coin (20$) on sapling
         Random r = new Random();
-        int low = 1;
-        int high = 10;
-        int result = r.nextInt(high) + low;   //Generate random number between 1 and 10 inclusive
-        if (result == 1) {
+        int result = r.nextInt(100) + 1;   //Generate random number between 1 and 100 inclusive
+        if (result <= SPAWN_COIN_CHANCE) {
             //Spawn coin
             location.addItem(new Coin(20));
         }
@@ -47,7 +49,7 @@ public class Sapling extends Tree {
         if(turns == 1000){
             Mature mature = new Mature();
             location.setGround(mature);
-        }*/
+        }
 
         //Increment turns
         turns += 1;
