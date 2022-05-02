@@ -14,9 +14,21 @@ public class Sprout extends Tree{
      * number of turns this ground have stayed in this world
      */
     private int turns;
+    /**
+     * Damage actor receives when it fails to jump to this ground
+     */
     private int damage;
+    /**
+     * Actor's chance to jump on this ground
+     */
     private double chanceToJump;
+    /**
+     * Name of this ground
+     */
     private final String NAME;
+    /**
+     * Chance to spawn goomba in %
+     */
     private static final int SPAWN_GOOMBA_CHANCE = 10;
 
     /**

@@ -14,9 +14,21 @@ public class Sapling extends Tree {
      * number of turns this ground have stayed in this world
      */
     private int turns;
+    /**
+     * Damage actor receives when it fails to jump to this ground
+     */
     private int damage;
+    /**
+     * Actor's chance to jump on this ground
+     */
     private double chanceToJump;
+    /**
+     * Name of this ground
+     */
     private final String NAME;
+    /**
+     * Chance to spawn coin on current location in %
+     */
     private static final int SPAWN_COIN_CHANCE = 10;
 
     /**
