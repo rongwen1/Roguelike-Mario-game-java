@@ -4,10 +4,21 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.Status;
 import game.TradableItem;
 
+/**
+ * <h1>Super Mushroom</h1>
+ * Item that the actor can consume and has different buff effects.
+ */
 public class SuperMushroom extends MagicalItem implements TradableItem {
+    /**
+     * The amount of hp increase actor gets after it is consumed
+     */
     private static final int increaseHp = 50;
     private final int price;
 
+    /**
+     * No Parameter Constructor for Super Mushroom.
+     * It initializes its name, displayChar and portability by calling its super constructor.
+     */
     public SuperMushroom() {
         super("Super Mushroom", '^', true);
         this.price = 400;
@@ -24,6 +35,11 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
         this.price = 400;
     }
 
+    /**
+     * This method will run after actor consumes this item.
+     * It will set buffs on actor that consumes this item
+     * @param actor
+     */
     @Override
     public void consume(Actor actor) {
         //set buffed actor
@@ -35,18 +51,28 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
 
     }
 
+    /**
+     * Method that adds capability/buffs to the actor
+     */
     @Override
     public void addCapabilityToActor() {
         buffedActor.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
         buffedActor.addCapability(Status.JUMP_FREELY);
     }
 
+    /**
+     * Method that removes capability/buffs from the actor
+     */
     @Override
     public void removeCapabilityFromActor() {
         buffedActor.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
         buffedActor.removeCapability(Status.JUMP_FREELY);
     }
 
+    /**
+     * Checks if this item buffs should be removed from the actor
+     * @return boolean true if the item buffs should be removed. False otherwise
+     */
     @Override
     public boolean removeBuff() {
         boolean flag = false;

@@ -38,7 +38,7 @@ public abstract class Tree extends HighGround implements Resettable {
     }
 
     /**
-     * It stores this into ResetManager
+     * It stores this resettable instance into ResetManager
      */
     @Override
     public void registerInstance() {
