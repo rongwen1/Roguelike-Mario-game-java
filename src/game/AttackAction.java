@@ -49,7 +49,7 @@ public class AttackAction extends Action {
             return actor + " instantly kills " + target +"."
                     + System.lineSeparator() + actionOnDefeat.execute(target, map);
         }
-        if(target.hasCapability(Status.INVINSIBLE)) {
+        if(target.hasCapability(Status.IMMUNITY)) {
             return target + "is invincible and takes no damage.";
         }
         int damage = weapon.damage();
