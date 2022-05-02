@@ -48,6 +48,7 @@ public class Sprout extends Tree{
      */
     @Override
     public void tick(Location location) {
+        super.tick(location);
 
         //10% chance to spawn Goomba from Sprout
         Random r = new Random();

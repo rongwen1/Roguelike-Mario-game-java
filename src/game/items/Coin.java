@@ -18,31 +18,33 @@ public class Coin extends Item implements Resettable {
      * Location of coin
      */
     private Location location;
+    /**
+     * if this class should reset game in boolean
+     */
+    private boolean resetGame;
 
     /**
      *
      * @param value integer that representing value of coin
      */
-
     public Coin(int value) {
         super("Coin",'$', true);
         this.value = value;
         this.registerInstance();
-        //I think we can just call this.registerInstance()//
-        //ResetManager.getInstance().appendResetInstance(this);
+        resetGame = false;
     }
 
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        //NEED TO BE CHANGED///////////////////////
-        this.location = currentLocation;
         super.tick(currentLocation, actor);
     }
 
     @Override
     public void tick(Location currentLocation) {
-        //NEED TO BE CHANGED///////////////////
-        this.location = currentLocation;
+        if (resetGame){
+            currentLocation.removeItem(this);
+            resetGame = false;
+        }
         super.tick(currentLocation);
     }
 
@@ -75,7 +77,7 @@ public class Coin extends Item implements Resettable {
 
     @Override
     public void resetInstance() {
-        location.removeItem(this);
+        resetGame = true;
     }
 
     @Override

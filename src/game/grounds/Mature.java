@@ -53,6 +53,8 @@ public class Mature extends Tree {
      */
     @Override
     public void tick(Location location) {
+        super.tick(location);
+
         int low;
         int high;
         int result;

@@ -1,5 +1,6 @@
 package game.grounds;
 
+import edu.monash.fit2099.engine.positions.Location;
 import game.interfaces.Resettable;
 
 import java.util.Random;
@@ -10,6 +11,10 @@ import java.util.Random;
  * this class will have a common property of tree.
  */
 public abstract class Tree extends HighGround implements Resettable {
+    /**
+     * if this class should reset game in boolean
+     */
+    private boolean resetGame;
 
     /**
      * Constructor for tree abstract class.
@@ -19,6 +24,25 @@ public abstract class Tree extends HighGround implements Resettable {
     public Tree(char displayChar) {
         super(displayChar);
         this.registerInstance();
+        resetGame = false;
+    }
+
+    @Override
+    public void tick(Location location) {
+        if (resetGame){
+            Random r = new Random();
+            int low = 1;
+            int high = 10;
+            int result = r.nextInt(high) + low;
+            //Tree will be converted to dirt at 50% chance
+            if (result <= 5 ) {
+                location.setGround(new Dirt());
+            }
+            resetGame = false;
+        }
+
+
+        super.tick(location);
     }
 
     /**
@@ -26,15 +50,7 @@ public abstract class Tree extends HighGround implements Resettable {
      */
     @Override
     public void resetInstance() {
-        Random r = new Random();
-        int low = 1;
-        int high = 10;
-        int result = r.nextInt(high) + low;
-        //Tree will be converted to dirt at 50% chance
-        if (result <=5 ) {
-            //////NEED TO BE CHANGED//////
-            //location.setGround(new Dirt());
-        }
+        resetGame = true;
 
     }
 

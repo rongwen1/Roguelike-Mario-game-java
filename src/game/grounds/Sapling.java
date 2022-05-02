@@ -48,6 +48,7 @@ public class Sapling extends Tree {
      */
     @Override
     public void tick(Location location) {
+        super.tick(location);
 
         //10% change to spawn coin (20$) on sapling
         Random r = new Random();
