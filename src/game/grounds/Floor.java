@@ -24,7 +24,7 @@ public class Floor extends Ground {
      */
     @Override
     public boolean canActorEnter(Actor actor) {
-        boolean allowEnterFloor = !(actor instanceof Enemy);
+        final boolean allowEnterFloor = !(actor instanceof Enemy);
         return allowEnterFloor && super.canActorEnter(actor);
     }
 

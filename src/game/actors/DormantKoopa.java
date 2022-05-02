@@ -14,14 +14,14 @@ public class DormantKoopa extends Actor {
 
     public DormantKoopa() {
         super("Dormant Koopa", 'D', 9999); // arbitrary amounts of health.
-        this.getInventory().add(new SuperMushroom());
+        this.addItemToInventory(new SuperMushroom());
     }
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.BREAKS_KOOPA_SHELL)) {
-            actions.add(new DestroyShellAction());
+            actions.add(new DestroyShellAction(this));
         }
         return actions;
     }

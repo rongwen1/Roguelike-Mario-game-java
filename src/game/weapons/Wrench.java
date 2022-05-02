@@ -9,7 +9,7 @@ public class Wrench extends WeaponItem implements TradableItem {
     private final int price;
 
     public Wrench() {
-        super("Wrench", 'p', 50, "verb", 80);
+        super("Wrench", 'p', 50, "wrenches", 80);
         this.addCapability(Status.BREAKS_KOOPA_SHELL);
         this.price = 200;
     }

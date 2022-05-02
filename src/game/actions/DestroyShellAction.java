@@ -5,9 +5,15 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 public class DestroyShellAction extends DefeatAction {
 
+    private final Actor target;
+
+    public DestroyShellAction(Actor target) {
+        this.target = target;
+    }
+
     @Override
     public String execute(Actor actor, GameMap map) {
-        super.execute(actor, map); // discard the returned string
+        super.execute(target, map); // discard the returned string
         return "Player smashes Koopa's shell with a wrench";
     }
 
