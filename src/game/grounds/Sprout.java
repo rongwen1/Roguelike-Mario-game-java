@@ -68,7 +68,7 @@ public class Sprout extends Tree{
         turns += 1;
     }
     /**
-     *
+     * Getter for damage
      * @return integer that representing the damage caused on player
      */
     @Override
@@ -77,7 +77,7 @@ public class Sprout extends Tree{
     }
 
     /**
-     *
+     * Getter for chance to jump
      * @return double that representing the success rate
      */
     @Override
@@ -85,7 +85,7 @@ public class Sprout extends Tree{
         return chanceToJump;
     }
     /**
-     *
+     * Getter for name
      * @return String representing name of the object
      */
     public String toString() {

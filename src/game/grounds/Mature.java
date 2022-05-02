@@ -118,7 +118,7 @@ public class Mature extends Tree {
     }
 
     /**
-     *
+     * Getter for damage
      * @return integer that representing the damage caused on player
      */
     @Override
@@ -127,7 +127,7 @@ public class Mature extends Tree {
     }
 
     /**
-     *
+     * Getter for chance to jump
      * @return double that representing the success rate
      */
 
@@ -137,7 +137,7 @@ public class Mature extends Tree {
     }
 
     /**
-     *
+     * Getter for name
      * @return String representing name of the object
      */
     public String toString() {

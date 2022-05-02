@@ -30,10 +30,7 @@ public class Player extends Actor implements Resettable {
      */
     private final ConsumedItemManager consumedItemManager;
 
-    /**
-     * If player has already performed resetAction
-     */
-    private boolean didReset;
+
 
     /**
      * Constructor.
@@ -48,9 +45,16 @@ public class Player extends Actor implements Resettable {
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
         this.addItemToInventory(new ResetTheGame("ResetTheGame", 'R', false));
-        didReset = false;
     }
 
+    /**
+     * Called every turn. The player's turn.
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return The selected action
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Handle multi-turn Actions
@@ -72,12 +76,12 @@ public class Player extends Actor implements Resettable {
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
 
-        ////For testing. Check actor's capabilities every turn////
+        /*////For testing. Check actor's capabilities every turn////
         System.out.println("Actor's capabilities: ");
         List<Enum<?>> status = this.capabilitiesList();
         for (Enum<?> stat : status) {
             System.out.println(stat.toString());
-        }
+        }*/
 
         // return/print the console menu
         return menu.showMenu(this, actions, display);
@@ -89,20 +93,25 @@ public class Player extends Actor implements Resettable {
                 : super.getDisplayChar();
     }
 
-    public void markResetAsDone() {
-        didReset = true;
-    }
 
+    /**
+     * Returns List of allowable action the player can make
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return
+     */
     @Override //This returns allowableAction.
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 
         ActionList actions = super.allowableActions(otherActor, direction, map);
-        /*if (!didReset) {
-            actions.add(new ResetAction());
-        }*/
+
         return actions;
     }
 
+    /**
+     * Called when reset game
+     */
     @Override
     public void resetInstance() {
         this.heal(9999); // TODO fix

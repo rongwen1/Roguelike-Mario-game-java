@@ -2,10 +2,22 @@ package game.grounds;
 
 public class Wall extends HighGround {
 
+	/**
+	 * Damage actor receives when it fails to jump to this ground
+	 */
 	private int damage;
+	/**
+	 * Actor's chance to jump on this ground
+	 */
 	private double chanceToJump;
+	/**
+	 * Name of this ground
+	 */
 	private final String NAME;
 
+	/**
+	 * Constructor for Wall.
+	 */
 	public Wall() {
 		super('#');
 		this.damage = 20;
@@ -14,12 +26,17 @@ public class Wall extends HighGround {
 
 	}
 
+	/**
+	 * terrain that blocks thrown objects but not movement, or vice versa
+	 * @return true if blocks thrown objects. false otherwise.
+	 */
 	@Override
 	public boolean blocksThrownObjects() {
 		return true;
 	}
+
 	/**
-	 *
+	 * Getter for damage
 	 * @return integer that representing the damage caused on player
 	 */
 	@Override
@@ -28,7 +45,7 @@ public class Wall extends HighGround {
 	}
 
 	/**
-	 *
+	 * Getter for chance to jump
 	 * @return double that representing the success rate
 	 */
 	@Override
@@ -37,7 +54,7 @@ public class Wall extends HighGround {
 	}
 
 	/**
-	 *
+	 * Getter for name
 	 * @return String representing name of the object
 	 */
 	public String toString() {
