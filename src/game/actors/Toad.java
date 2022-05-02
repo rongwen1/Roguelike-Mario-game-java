@@ -15,9 +15,17 @@ import game.items.PowerStar;
 import game.items.SuperMushroom;
 
 import java.util.ArrayList;
-
+/**
+ * Class representing the Toad.
+ */
 public class Toad extends Actor {
+    /**
+     * Arraylist of TradableItem
+     */
     private ArrayList<TradableItem> tradableItems;
+    /**
+     * ArrayList of Item
+     */
     private ArrayList<Item> items;
     public Toad() {
         super("Toad", 'O', 9999); // arbitrary amounts of health.

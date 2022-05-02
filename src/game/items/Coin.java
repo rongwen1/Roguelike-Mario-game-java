@@ -46,20 +46,28 @@ public class Coin extends Item implements Resettable {
         super.tick(currentLocation);
     }
 
+    /**
+     *
+     * @return an integer that representing the value of coin
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * Overwrite getDropAction, so that the coin can't be dropped by actor
+     * @param actor Actor that want to drop coin
+     * @return DropItemAction
+     */
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
     }
 
-    @Override
-    public PickUpItemAction getPickUpAction(Actor actor) {
-        return super.getPickUpAction(actor);
-    }
-
+    /**
+     *
+     * @return String with its value
+     */
     public String toString(){
         return "Coin ($" + value + ")";
     }

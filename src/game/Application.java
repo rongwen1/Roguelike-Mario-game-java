@@ -129,6 +129,8 @@ public class Application {
 			gameMap.at(35, 10).addActor(new Goomba());
 			gameMap.at(35, 15).addActor(new Koopa());
 
+
+
 			//Add 5-7 sprouts randomly onto the map
 			Random r = new Random();
 			int sproutCount = r.nextInt(3) + 5;   //5-7 inclusive
