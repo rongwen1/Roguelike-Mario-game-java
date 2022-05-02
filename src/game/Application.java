@@ -10,6 +10,8 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.Goomba;
+import game.actors.Koopa;
 import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.*;
@@ -121,12 +123,11 @@ public class Application {
 
 
 
-			/*Actor mario = new Player("Player", 'm', 100);
-			world.addPlayer(mario, gameMap.at(42, 10));
+			//Actor mario = new Player("Player", 'm', 100);
+			//world.addPlayer(mario, gameMap.at(42, 10));
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
-
-			;*/
+			gameMap.at(35, 15).addActor(new Koopa());
 
 			//Add 5-7 sprouts randomly onto the map
 			Random r = new Random();
