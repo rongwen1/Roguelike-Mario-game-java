@@ -8,10 +8,23 @@ import game.ConsumableItem;
 import game.ConsumeAction;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+/**
+ * <h1>Magical Item</h1>
+ * Abstract class that represents consumable item that has buff
+ * effect for several turns when consumed.
+ */
 public abstract class MagicalItem extends Item implements ConsumableItem {
+    /**
+     * Whether this item is current inside actor's inventory
+     */
     private boolean isInActorInventory;
+    /**
+     * Stores actor that consumed this item
+     */
     protected Actor buffedActor;
 
     /***
@@ -25,11 +38,18 @@ public abstract class MagicalItem extends Item implements ConsumableItem {
         isInActorInventory = false;
     }
 
+    /**
+     * Remove item from actor inventory after called.
+     */
     @Override
     public void removeItemFromInventory() {
         buffedActor.removeItemFromInventory(this);
     }
 
+    /**
+     * Called once per turn, so that items can experience the passage of time.
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         //Item not in actor inventory
@@ -38,6 +58,11 @@ public abstract class MagicalItem extends Item implements ConsumableItem {
         super.tick(currentLocation);
     }
 
+    /**
+     * Called once per turn, so that items can experience the passage of time.
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         //Item in actor inventory
@@ -46,6 +71,11 @@ public abstract class MagicalItem extends Item implements ConsumableItem {
         super.tick(currentLocation, actor);
     }
 
+    /**
+     * When this method is called, it checks if item is inside actor's inventory.
+     * If it is inside actor's inventory, return new action that this item gives.
+     * @return List of new actions that this item gives
+     */
     @Override
     public List<Action> getAllowableActions() {
         List<Action> actionList = new ArrayList<Action>();
@@ -57,6 +87,11 @@ public abstract class MagicalItem extends Item implements ConsumableItem {
         return super.getAllowableActions();
     }
 
+    /**
+     * This method will run after actor consumes this item.
+     * It will set buffs on actor that consumes this item
+     * @param actor
+     */
     @Override
     public void consume(Actor actor) {
         buffedActor = actor;

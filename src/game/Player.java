@@ -15,8 +15,17 @@ import java.util.List;
  */
 public class Player extends Actor implements Resettable {
 
+    /**
+     * Class that are capable of displaying lines of string
+     */
     private final Menu menu = new Menu();
+    /**
+     * Instance of ConsumedItemManager.
+     */
     private final ConsumedItemManager consumedItemManager;
+    /**
+     * If player has already performed resetAction
+     */
 	private boolean didReset;
 
 	/**
