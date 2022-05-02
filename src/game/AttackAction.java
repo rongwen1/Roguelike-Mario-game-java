@@ -45,8 +45,8 @@ public class AttackAction extends Action {
         if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
             return actor + " misses " + target + ".";
         }
-        if (actor.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
-            actor.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
+        if (target.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
+            target.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
         }
         if (actor.hasCapability(Status.INSTANT_KILL_ENEMY)) {
             return actor + " instantly kills " + target + "."
