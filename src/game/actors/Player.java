@@ -6,13 +6,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.ResetTheGame;
+import game.actions.ResetAction;
 import game.enums.Status;
 import game.interfaces.Resettable;
 import game.managers.ConsumedItemManager;
 import game.managers.ResetManager;
 import game.managers.WalletManager;
-import java.util.List;
 
 /**
  * Class representing the Player.
@@ -29,6 +28,11 @@ public class Player extends Actor implements Resettable {
      */
     private final ConsumedItemManager consumedItemManager;
 
+    /**
+     * boolean, true if reset action used
+     */
+    private boolean hasReset;
+
 
 
     /**
@@ -43,7 +47,7 @@ public class Player extends Actor implements Resettable {
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
-        this.addItemToInventory(new ResetTheGame("ResetTheGame", 'R', false));
+        hasReset = false;
     }
 
     /**
@@ -61,19 +65,29 @@ public class Player extends Actor implements Resettable {
             return lastAction.getNextAction();
         }
 
+        // Handle reset action
+        if (lastAction instanceof ResetAction){
+            this.toggleHasReset();
+        }
+        if (!this.hasReset){
+            actions.add(new ResetAction());
+        }
+
         //Ticker for ConsumedItemManager
         consumedItemManager.consumedItemTicker();
-        //If player has super mushroom effect ongoing, change the display character to M
-        if (this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
-            this.setDisplayChar('M');
-        } else if (!this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
-            this.setDisplayChar('m');
-        }
+
         // Print player's hp
         System.out.println("Player's HP: " + printHp());
         // Print wallet balance
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
+        // Set display character after super mushroom is consumed
+        if (this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
+            this.setDisplayChar('M');
+        }
+        else {
+            this.setDisplayChar('m');
+        }
 
         /*////For testing. Check actor's capabilities every turn////
         System.out.println("Actor's capabilities: ");
@@ -117,4 +131,7 @@ public class Player extends Actor implements Resettable {
         //this.capabilitiesList().forEach(this::removeCapability);
     }
 
+    private void toggleHasReset() {
+        this.hasReset = true;
+    }
 }
