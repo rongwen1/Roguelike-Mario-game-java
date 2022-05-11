@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.items.Bottle;
 import game.actions.ResetAction;
 import game.enums.Status;
 import game.interfaces.Resettable;
@@ -33,6 +35,11 @@ public class Player extends Actor implements Resettable {
      */
     private boolean hasReset;
 
+    /**
+     * punch base damage
+     */
+    private int baseDamage;
+
 
 
     /**
@@ -48,6 +55,10 @@ public class Player extends Actor implements Resettable {
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
         hasReset = false;
+        //Add bottle to player
+        this.addItemToInventory(Bottle.getInstance());
+        //Set base damage as 5
+        baseDamage = 5;
     }
 
     /**
@@ -73,6 +84,12 @@ public class Player extends Actor implements Resettable {
             actions.add(new ResetAction());
         }
 
+        //If actor has certain capability
+        if (this.hasCapability(Status.INCREEASE_BASE_DAMAGE_BY_15)){
+            baseDamage += 15;
+            this.removeCapability(Status.INCREEASE_BASE_DAMAGE_BY_15);
+        }
+
         //Ticker for ConsumedItemManager
         consumedItemManager.consumedItemTicker();
 
@@ -81,14 +98,8 @@ public class Player extends Actor implements Resettable {
         // Print wallet balance
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
-        // Set display character after super mushroom is consumed
-        if (this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)){
-            this.setDisplayChar('M');
-        }
-        else {
-            this.setDisplayChar('m');
-        }
-
+        //For testing. Prints out player damage
+        System.out.println("Base damage: " + baseDamage);
         /*////For testing. Check actor's capabilities every turn////
         System.out.println("Actor's capabilities: ");
         List<Enum<?>> status = this.capabilitiesList();
@@ -120,6 +131,11 @@ public class Player extends Actor implements Resettable {
         ActionList actions = super.allowableActions(otherActor, direction, map);
 
         return actions;
+    }
+
+    @Override
+    protected IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(baseDamage, "punches");
     }
 
     /**

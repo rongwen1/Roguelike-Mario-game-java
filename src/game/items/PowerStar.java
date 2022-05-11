@@ -83,9 +83,9 @@ public class PowerStar extends MagicalItem implements TradableItem {
      * @param actor
      */
     @Override
-    public void consume(Actor actor) {
+    public String consume(Actor actor) {
         //Set buffed actor
-        super.consume(actor);
+        String output = super.consume(actor);
         //Increase max hp of the actor
         actor.heal(increaseHp);
         //Add capability of this item to the actor
@@ -94,6 +94,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
         //Update effect turns
         effectTurns = 10;
 
+        return output;
     }
 
     /**

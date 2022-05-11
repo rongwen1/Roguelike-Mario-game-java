@@ -41,14 +41,15 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
      * @param actor
      */
     @Override
-    public void consume(Actor actor) {
+    public String consume(Actor actor) {
         //set buffed actor
-        super.consume(actor);
+        String output = super.consume(actor);
         //Increase max hp of the actor
         actor.increaseMaxHp(increaseMaxHp);
         //Add capability of this item to the actor
         this.addCapabilityToActor();
 
+        return output;
     }
 
     /**
@@ -58,6 +59,7 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
     public void addCapabilityToActor() {
         buffedActor.addCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
         buffedActor.addCapability(Status.JUMP_FREELY);
+        buffedActor.addCapability(Status.TALL);
     }
 
     /**
@@ -67,6 +69,7 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
     public void removeCapabilityFromActor() {
         buffedActor.removeCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING);
         buffedActor.removeCapability(Status.JUMP_FREELY);
+        buffedActor.removeCapability(Status.TALL);
     }
 
     /**

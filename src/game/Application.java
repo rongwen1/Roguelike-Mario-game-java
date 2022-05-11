@@ -10,8 +10,6 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.Goomba;
-import game.actors.Koopa;
 import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.*;
@@ -29,7 +27,8 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Mature(), new Sapling(), new Sprout());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Mature(), new Sapling(), new Sprout()
+					,new HealthFountain(), new PowerFountain());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
@@ -71,7 +70,7 @@ public class Application {
 				"....................................................#...........................",
 				".....................................................#..........................",
 				"......................................................#.........................",
-				".......................................................##.......................");
+				".................................H.A...................##.......................");
 		/*map = Arrays.asList(
 				"..........................................##....................................",
 				"............................................#...................................",
