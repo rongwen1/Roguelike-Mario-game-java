@@ -16,4 +16,5 @@ public enum Status {
     POWER_STAR_EFFECT_ONGOING, // player has the "power star" effect for the next few turns
 
     INCREEASE_BASE_DAMAGE_BY_15, // increase actor base damage/intrinsic attack damage by 15
+    DROP_FIRE_WHEN_ATTACK, // drops fire at target location when attacking
 }

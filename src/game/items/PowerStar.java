@@ -14,7 +14,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
     /**
      * number of turns this item have stayed in this world
      */
-    private final int turns;
+    private int turns;
     /**
      * number of turns this item has buffed the actor
      */
@@ -55,9 +55,11 @@ public class PowerStar extends MagicalItem implements TradableItem {
     @Override
     public void tick(Location currentLocation) {
         //Remove this item from location after 10 turns in the world
-        if (turns == 100000){
+        if (turns == 10){
             currentLocation.removeItem(this);
         }
+
+        turns += 1;
 
         super.tick(currentLocation);
     }
@@ -70,9 +72,11 @@ public class PowerStar extends MagicalItem implements TradableItem {
     @Override
     public void tick(Location currentLocation, Actor actor) {
         //Remove this item from actor after 10 turns in the world
-        if (turns == 100000){
+        if (turns == 10){
             actor.removeItemFromInventory(this);
         }
+
+        turns += 1;
 
         super.tick(currentLocation, actor);
     }

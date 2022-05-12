@@ -14,6 +14,7 @@ import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.*;
 import game.items.Coin;
+import game.items.FireFlower;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 
@@ -103,14 +104,13 @@ public class Application {
 			gameMap.at(1,1).setGround(sapling);
 
 			//Add item
-			SuperMushroom superMushroom = new SuperMushroom("Super Mushroom", '^', true);
-			gameMap.at(41, 17).addItem(superMushroom);
-			PowerStar powerStar= new PowerStar();
-			gameMap.at(41, 16).addItem(powerStar);
-			Coin coin = new Coin(20);
-			gameMap.at(43,17).addItem(coin);
+			gameMap.at(41, 17).addItem(new SuperMushroom("Super Mushroom", '^', true));
+			gameMap.at(41, 16).addItem(new PowerStar());
+			gameMap.at(43,17).addItem(new Coin(20));
+			//Add fire
+			gameMap.at(42,18).addItem(new FireFlower());
 			//Add player
-			Actor mario = new Player("Mario", 'm', 100);
+			Actor mario = new Player("Mario", 'm', 1000);
 			world.addPlayer(mario, gameMap.at(42, 17));
 
 			gameMap.at(43, 10).addActor(new Toad());

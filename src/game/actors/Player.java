@@ -15,6 +15,8 @@ import game.managers.ConsumedItemManager;
 import game.managers.ResetManager;
 import game.managers.WalletManager;
 
+import java.util.List;
+
 /**
  * Class representing the Player.
  */
@@ -100,12 +102,12 @@ public class Player extends Actor implements Resettable {
 
         //For testing. Prints out player damage
         System.out.println("Base damage: " + baseDamage);
-        /*////For testing. Check actor's capabilities every turn////
+        ////For testing. Check actor's capabilities every turn////
         System.out.println("Actor's capabilities: ");
         List<Enum<?>> status = this.capabilitiesList();
         for (Enum<?> stat : status) {
             System.out.println(stat.toString());
-        }*/
+        }
 
         // return/print the console menu
         return menu.showMenu(this, actions, display);
