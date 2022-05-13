@@ -6,17 +6,17 @@ import java.util.Random;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.positions.World;
+import edu.monash.fit2099.engine.positions.*;
+import game.actors.Goomba;
+import game.actors.Koopa;
 import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.*;
 import game.items.Coin;
-import game.items.FireFlower;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
+
+import static game.enums.Status.MOVE_TO_SECOND_MAP;
 
 /**
  * The main class for the Mario World game.
@@ -28,8 +28,7 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Mature(), new Sapling(), new Sprout()
-					,new HealthFountain(), new PowerFountain());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Mature(), new Sapling(), new Sprout(), new Lava(), new WarpPipe());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
@@ -48,32 +47,13 @@ public class Application {
 				"........................+........................##.............+...............",
 				"...................................................#............................",
 				"....................................................#...........................",
-				"...................+.................................#..........................",
-				"......................................................#.........................",
-				".......................................................##.......................");
+				"...................+....................C............#..........................",
+				"........................................C.............#.........................",
+				".........................................L.............##.......................");
 
-		map = Arrays.asList(
-				"..........................................##....................................",
-				"............................................#...................................",
-				"............................................#...................................",
-				".............................................##.................................",
-				"...............................................#................................",
-				"................................................#...............................",
-				"..................................................#.............................",
-				".................................................##.............................",
-				"................................................##..............................",
-				".........................................#____####..............................",
-				"........................................#_____###...............................",
-				"........................................#______###..............................",
-				".........................................#_____###..............................",
-				".................................................##.............................",
-				"...................................................#............................",
-				"....................................................#...........................",
-				".....................................................#..........................",
-				"......................................................#.........................",
-				".................................H.A...................##.......................");
-		/*map = Arrays.asList(
-				"..........................................##....................................",
+
+		/*List<String> map1 = Arrays.asList(
+				".C........................................##....................................",
 				"............................................#...................................",
 				"............................................#...................................",
 				".............................................##.................................",
@@ -92,10 +72,10 @@ public class Application {
 				".....................................................#..........................",
 				"......................................................#.........................",
 				".......................................................##.......................");*/
+
+
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
-
-
 
 
 			////////RW_TESTING////////
@@ -104,25 +84,24 @@ public class Application {
 			gameMap.at(1,1).setGround(sapling);
 
 			//Add item
-			gameMap.at(41, 17).addItem(new SuperMushroom("Super Mushroom", '^', true));
-			gameMap.at(41, 16).addItem(new PowerStar());
-			gameMap.at(43,17).addItem(new Coin(20));
-			//Add fire
-			gameMap.at(42,18).addItem(new FireFlower());
-			//Add player
-			Actor mario = new Player("Mario", 'm', 1000);
-			world.addPlayer(mario, gameMap.at(42, 17));
-
+			SuperMushroom superMushroom = new SuperMushroom("Super Mushroom", '^', true);
+			gameMap.at(41, 17).addItem(superMushroom);
+			PowerStar powerStar= new PowerStar();
+			gameMap.at(41, 16).addItem(powerStar);
+			Coin coin = new Coin(20);
+			gameMap.at(43,17).addItem(coin);
 			gameMap.at(43, 10).addActor(new Toad());
+			//Add player
+			Actor mario = new Player("Mario", 'm', 100);
 
+			world.addPlayer(mario, gameMap.at(42, 17));
 
 
 			//Actor mario = new Player("Player", 'm', 100);
 			//world.addPlayer(mario, gameMap.at(42, 10));
 			// FIXME: the Goomba should be generated from the Tree
-			//gameMap.at(35, 10).addActor(new Goomba());
-			//gameMap.at(35, 15).addActor(new Koopa());
-
+			gameMap.at(35, 10).addActor(new Goomba());
+			gameMap.at(35, 15).addActor(new Koopa());
 
 
 			//Add 5-7 sprouts randomly onto the map

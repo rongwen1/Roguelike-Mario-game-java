@@ -14,8 +14,17 @@ public class Koopa extends Enemy {
      * Constructor.
      */
     public Koopa() {
+        this(100); // default hit points
+    }
+
+    /**
+     * Constructor with an argument for koopa's hit points.
+     *
+     * @param hitPoints the Actor's starting hit points
+     */
+    public Koopa(int hitPoints) {
+        super("Koopa", 'k', hitPoints, true);
         // DefeatAction is bypassed - if Koopa had droppable items, they will not be dropped
-        super("Koopa", 'k', 100);
         super.actionOnSelfDefeat = new DormantAction();
     }
 

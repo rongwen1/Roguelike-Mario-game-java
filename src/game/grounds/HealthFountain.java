@@ -26,5 +26,4 @@ public class HealthFountain extends Ground {
         return actionlist;
     }
 
-
 }

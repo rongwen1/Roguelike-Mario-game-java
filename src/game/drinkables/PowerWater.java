@@ -20,6 +20,4 @@ public class PowerWater implements Drinkable {
     public String toString() {
         return this.name;
     }
-
 }
-

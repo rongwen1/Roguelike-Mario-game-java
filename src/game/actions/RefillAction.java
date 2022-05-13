@@ -19,7 +19,6 @@ public class RefillAction extends Action {
         return actor.toString() + " refills " + drink.toString();
     }
 
-
     @Override
     public String menuDescription(Actor actor) {
         return actor.toString() + " refill " + drink.toString();

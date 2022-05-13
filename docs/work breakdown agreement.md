@@ -8,6 +8,7 @@
 
 Separate interaction(optional) and class diagrams for each requirement + design rationales for:
 
+Assignment 1 / 2
 - REQ1: by Teh Rong Wen (31882617)
 - REQ2: by Lim Seng Onn (32200250)
 - REQ3: by Ng Yen Kai (32217021)
@@ -15,6 +16,9 @@ Separate interaction(optional) and class diagrams for each requirement + design 
 - REQ5: by Lim Seng Onn (32200250)
 - REQ6: by Ng Yen Kai (32217021)
 - REQ7: by everyone (all 3 members in the team)
+
+Assignment 3
+- REQ2: by Ng Yen Kai (32217021)
 
 ## Testing and Reviewing
 
@@ -30,6 +34,7 @@ All members will be responsible for testing the requirements they have been assi
 
 >The dates by which the deliverable, test, and review need to be completed:
 
+Assignment 1
 - deliverables: by friday, 8th April 2022
 - testing: by saturday, 9th April 2022
 - review: by saturday, 9th April 2022
