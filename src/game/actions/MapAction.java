@@ -10,6 +10,7 @@ import game.managers.LocationMemoryManager;
 import static game.enums.Status.MOVE_TO_SECOND_MAP;
 
 public class MapAction extends Action {
+
     private String direction;
     private Location location;
     private World world;

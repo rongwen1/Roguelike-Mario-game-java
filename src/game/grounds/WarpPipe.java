@@ -5,11 +5,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
 import game.actions.MapAction;
-import game.actions.TeleportAction;
+
 
 public class WarpPipe extends HighGround{
 
     /**
+     *
      * Damage actor receives when it fails to jump to this ground
      */
     private int damage;

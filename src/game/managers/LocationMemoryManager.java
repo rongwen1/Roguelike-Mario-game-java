@@ -41,8 +41,8 @@ public class LocationMemoryManager {
                 "...........L.......",
                 "...................");
         GameMap gameMap = new GameMap(groundFactory, map);
-        //gameMap.at(0,0).addActor(new Goomba());
-        //gameMap.at(5, 3).addActor(new Koopa());
+
+
 
         appendLastGameMap(gameMap);
     }
