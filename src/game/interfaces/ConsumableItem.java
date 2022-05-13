@@ -12,7 +12,7 @@ public interface ConsumableItem {
      * Empty method that contains buffs after it is consumed by actor
      * @param actor that consumes this item
      */
-    void consume(Actor actor);
+    String consume(Actor actor);
 
     /**
      * method that adds capability to the actor
@@ -34,5 +34,5 @@ public interface ConsumableItem {
      * @return boolean true if item buffs should be removed. False otherwise
      */
     boolean removeBuff();
-
 }
+

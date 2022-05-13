@@ -1,6 +1,7 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.items.FireFlower;
 import game.items.Coin;
 
 import java.util.Random;
@@ -58,8 +59,14 @@ public class Sapling extends Tree {
             location.addItem(new Coin(20));
         }
 
-        //Convert to mature after 10 turns
+        //After 10 turns
         if(turns == 10){
+            //Spawn fire flower at 50% chance
+            result = r.nextInt(2) ;   //Generate random number of 0 or 1
+            if (result == 1){
+                location.addItem(new FireFlower());
+            }
+            //convert to mature
             Mature mature = new Mature();
             location.setGround(mature);
         }
@@ -93,6 +100,5 @@ public class Sapling extends Tree {
     public String toString() {
         return NAME;
     }
-
 
 }

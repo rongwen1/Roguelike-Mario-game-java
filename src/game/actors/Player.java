@@ -6,14 +6,17 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
-import game.items.ResetTheGame;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.actions.ResetAction;
 import game.enums.Status;
 import game.interfaces.Resettable;
+import game.items.Bottle;
 import game.managers.ConsumedItemManager;
 import game.managers.LocationMemoryManager;
 import game.managers.ResetManager;
 import game.managers.WalletManager;
+
+import java.util.List;
 
 
 /**
@@ -31,6 +34,16 @@ public class Player extends Actor implements Resettable {
      */
     private final ConsumedItemManager consumedItemManager;
 
+    /**
+     * boolean, true if reset action used
+     */
+    private boolean hasReset;
+
+    /**
+     * punch base damage
+     */
+    private int baseDamage;
+
     private LocationMemoryManager memory;
 
 
@@ -47,8 +60,11 @@ public class Player extends Actor implements Resettable {
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
-        this.addItemToInventory(new ResetTheGame("ResetTheGame", 'R', false));
-        memory = LocationMemoryManager.getInstance();
+        hasReset = false;
+        //Add bottle to player
+        this.addItemToInventory(Bottle.getInstance());
+        //Set base damage as 5
+        baseDamage = 5;
     }
 
     /**
@@ -66,26 +82,36 @@ public class Player extends Actor implements Resettable {
             return lastAction.getNextAction();
         }
 
+        // Handle reset action
+        if (lastAction instanceof ResetAction){
+            this.toggleHasReset();
+        }
+        if (!this.hasReset){
+            actions.add(new ResetAction());
+        }
+
+        //If actor has certain capability
+        if (this.hasCapability(Status.INCREEASE_BASE_DAMAGE_BY_15)){
+            baseDamage += 15;
+            this.removeCapability(Status.INCREEASE_BASE_DAMAGE_BY_15);
+        }
+
         //Ticker for ConsumedItemManager
         consumedItemManager.consumedItemTicker();
-        //If player has super mushroom effect ongoing, change the display character to M
-        if (this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
-            this.setDisplayChar('M');
-        } else if (!this.hasCapability(Status.SUPER_MUSHROOM_EFFECT_ONGOING)) {
-            this.setDisplayChar('m');
-        }
+
         // Print player's hp
         System.out.println("Player's HP: " + printHp());
         // Print wallet balance
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
-
+        //For testing. Prints out player damage
+        System.out.println("Base damage: " + baseDamage);
         ////For testing. Check actor's capabilities every turn////
-//        System.out.println("Actor's capabilities: ");
-//        List<Enum<?>> status = this.capabilitiesList();
-//        for (Enum<?> stat : status) {
-//            System.out.println(stat.toString());
-//        }
+        System.out.println("Actor's capabilities: ");
+        List<Enum<?>> status = this.capabilitiesList();
+        for (Enum<?> stat : status) {
+            System.out.println(stat.toString());
+        }
 
         // return/print the console menu
         return menu.showMenu(this, actions, display);
@@ -113,6 +139,11 @@ public class Player extends Actor implements Resettable {
         return actions;
     }
 
+    @Override
+    protected IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(baseDamage, "punches");
+    }
+
     /**
      * Called when reset game
      */
@@ -122,6 +153,8 @@ public class Player extends Actor implements Resettable {
         capabilitiesList().forEach(this::removeCapability);
     }
 
-
+    private void toggleHasReset() {
+        this.hasReset = true;
+    }
 
 }

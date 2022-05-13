@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actors.Enemy;
 import game.enums.Status;
+import game.items.Fire;
+
 import java.util.Random;
 
 /**
@@ -76,6 +78,9 @@ public class AttackAction extends Action {
         if (target.hasCapability(Status.IMMUNITY)) {
             return target + "is invincible and takes no damage.";
         }
+        if (actor.hasCapability(Status.DROP_FIRE_WHEN_ATTACK)){ //Drops fire at target location after successful attack
+            map.locationOf(target).addItem(new Fire());
+        }
         // perform the attack
         int damage = weapon.damage();
         String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
@@ -96,7 +101,12 @@ public class AttackAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " attacks " + target + " at " + direction;
+        String output = actor + " attacks " + target + " at " + direction;
+        if (actor.hasCapability(Status.DROP_FIRE_WHEN_ATTACK)){
+            output += " with fire!";
+        }
+
+        return output;
     }
 
 }

@@ -1,6 +1,7 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.items.FireFlower;
 import game.actors.Goomba;
 
 import java.util.Random;
@@ -58,8 +59,14 @@ public class Sprout extends Tree{
             location.addActor(goomba);
         }
 
-        //Convert to sapling after 10 turns
+        //After 10 turns
         if(turns == 10){
+            //Spawn fire flower at 50% chance
+            result = r.nextInt(2) ;   //Generate random number of 0 or 1
+            if (result == 1){
+                location.addItem(new FireFlower());
+            }
+            //Convert to sprout
             Sapling sapling = new Sapling();
             location.setGround(sapling);
         }
@@ -91,6 +98,5 @@ public class Sprout extends Tree{
     public String toString() {
         return NAME;
     }
-
 
 }
