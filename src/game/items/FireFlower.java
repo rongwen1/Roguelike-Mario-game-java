@@ -56,4 +56,5 @@ public class FireFlower extends MagicalItem {
 
         return flag;
     }
+
 }

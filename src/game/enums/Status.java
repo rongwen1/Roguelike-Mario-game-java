@@ -17,4 +17,5 @@ public enum Status {
 
     INCREEASE_BASE_DAMAGE_BY_15, // increase actor base damage/intrinsic attack damage by 15
     DROP_FIRE_WHEN_ATTACK, // drops fire at target location when attacking
+
 }

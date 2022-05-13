@@ -95,4 +95,5 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
     public int getValue() {
         return price;
     }
+
 }

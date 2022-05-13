@@ -156,4 +156,5 @@ public class PowerStar extends MagicalItem implements TradableItem {
     public int getValue() {
         return price;
     }
+
 }

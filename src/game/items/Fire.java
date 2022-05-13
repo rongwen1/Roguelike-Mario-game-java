@@ -34,6 +34,7 @@ public class Fire extends Item {
             currentLocation.removeItem(this);
         }
 
+
         turns += 1;
     }
 }

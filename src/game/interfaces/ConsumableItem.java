@@ -34,4 +34,5 @@ public interface ConsumableItem {
      * @return boolean true if item buffs should be removed. False otherwise
      */
     boolean removeBuff();
+
 }

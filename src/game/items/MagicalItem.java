@@ -95,4 +95,5 @@ public abstract class MagicalItem extends Item implements ConsumableItem {
         buffedActor = actor;
         return actor.toString() + " consumes " + this;
     }
+
 }

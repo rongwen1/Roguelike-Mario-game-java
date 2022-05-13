@@ -117,4 +117,5 @@ public class ConsumedItemManager implements Resettable {
     public void registerInstance() {
         Resettable.super.registerInstance();
     }
+
 }

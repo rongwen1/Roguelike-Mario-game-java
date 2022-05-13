@@ -65,4 +65,5 @@ public abstract class Tree extends HighGround implements Resettable {
     public void registerInstance() {
         Resettable.super.registerInstance();
     }
+
 }
