@@ -12,7 +12,7 @@ public class Goomba extends Enemy {
      * Constructor.
      */
     public Goomba() {
-        super("Goomba", 'g', 50);
+        super("Goomba", 'g', 50, true);
         this.behaviours.put(1, new SuicideBehavior());
     }
 

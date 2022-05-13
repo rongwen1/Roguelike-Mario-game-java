@@ -40,11 +40,14 @@ public abstract class Enemy extends Actor implements Resettable {
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
+     * @param doesWander  whether the Enemy should wander around on its own
      */
-    public Enemy(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints, boolean doesWander) {
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new AttackBehaviour(new DefeatAction()));
-        this.behaviours.put(30, new WanderBehaviour());
+        if (doesWander) {
+            this.behaviours.put(30, new WanderBehaviour());
+        }
         ResetManager.getInstance().appendResetInstance(this);
     }
 

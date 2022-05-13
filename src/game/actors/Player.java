@@ -145,8 +145,8 @@ public class Player extends Actor implements Resettable {
      */
     @Override
     public void resetInstance() {
-        this.heal(9999); // TODO fix
-        //this.capabilitiesList().forEach(this::removeCapability);
+        heal(getMaxHp());
+        capabilitiesList().forEach(this::removeCapability);
     }
 
     private void toggleHasReset() {
