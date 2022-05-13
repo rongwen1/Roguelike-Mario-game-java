@@ -50,6 +50,7 @@ public class MapAction extends Action {
             world.addPlayer(actor,nextMap.at(location.x(),location.y()));
         }
 
+
         world.run();
         return "Map shifted";
 

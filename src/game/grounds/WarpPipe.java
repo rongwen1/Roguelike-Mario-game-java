@@ -8,7 +8,6 @@ import game.actions.MapAction;
 
 
 public class WarpPipe extends HighGround{
-
     /**
      *
      * Damage actor receives when it fails to jump to this ground

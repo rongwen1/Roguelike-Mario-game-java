@@ -10,6 +10,7 @@ public class LavaAction extends Action {
     private String direction;
     private Location location;
 
+
     /**
      * Constructor
      * @param direction Direction of the jumpable ground from actor

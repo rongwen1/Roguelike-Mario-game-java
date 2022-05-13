@@ -9,7 +9,6 @@ import game.actors.Enemy;
 
 public class Lava extends Ground {
 
-
     /**
      * Constructor.
      *

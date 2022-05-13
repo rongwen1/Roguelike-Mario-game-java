@@ -16,6 +16,7 @@ import java.util.List;
 
 public class LocationMemoryManager {
 
+
     private ArrayList<Location> locationMemory;
     private ArrayList<GameMap> gameMapMemory;
 

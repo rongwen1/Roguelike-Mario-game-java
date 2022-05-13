@@ -65,6 +65,7 @@ public class Player extends Actor implements Resettable {
         this.addItemToInventory(Bottle.getInstance());
         //Set base damage as 5
         baseDamage = 5;
+        memory = LocationMemoryManager.getInstance();
     }
 
     /**
