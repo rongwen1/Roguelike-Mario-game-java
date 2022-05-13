@@ -14,4 +14,5 @@ public enum Status {
     DESTROY_HIGHER_GROUND_TO_$5COIN,
     BREAKS_KOOPA_SHELL, // able to break Koopa's shell in its dormant state (eg. the wrench)
     POWER_STAR_EFFECT_ONGOING, // player has the "power star" effect for the next few turns
+    MOVE_TO_SECOND_MAP,
 }

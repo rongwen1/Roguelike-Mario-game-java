@@ -6,13 +6,15 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.items.ResetTheGame;
 import game.enums.Status;
 import game.interfaces.Resettable;
 import game.managers.ConsumedItemManager;
+import game.managers.LocationMemoryManager;
 import game.managers.ResetManager;
 import game.managers.WalletManager;
-import java.util.List;
+
 
 /**
  * Class representing the Player.
@@ -29,6 +31,8 @@ public class Player extends Actor implements Resettable {
      */
     private final ConsumedItemManager consumedItemManager;
 
+    private LocationMemoryManager memory;
+
 
 
     /**
@@ -44,6 +48,7 @@ public class Player extends Actor implements Resettable {
         consumedItemManager = ConsumedItemManager.getInstance();
         ResetManager.getInstance().appendResetInstance(this);
         this.addItemToInventory(new ResetTheGame("ResetTheGame", 'R', false));
+        memory = LocationMemoryManager.getInstance();
     }
 
     /**
@@ -75,12 +80,12 @@ public class Player extends Actor implements Resettable {
         System.out.println("Wallet: $" + WalletManager.getInstance().getWalletBalance(this));
 
 
-        /*////For testing. Check actor's capabilities every turn////
-        System.out.println("Actor's capabilities: ");
-        List<Enum<?>> status = this.capabilitiesList();
-        for (Enum<?> stat : status) {
-            System.out.println(stat.toString());
-        }*/
+        ////For testing. Check actor's capabilities every turn////
+//        System.out.println("Actor's capabilities: ");
+//        List<Enum<?>> status = this.capabilitiesList();
+//        for (Enum<?> stat : status) {
+//            System.out.println(stat.toString());
+//        }
 
         // return/print the console menu
         return menu.showMenu(this, actions, display);
@@ -116,5 +121,6 @@ public class Player extends Actor implements Resettable {
         this.heal(9999); // TODO fix
         //this.capabilitiesList().forEach(this::removeCapability);
     }
+
 
 }
