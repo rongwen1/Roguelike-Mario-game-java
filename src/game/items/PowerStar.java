@@ -14,7 +14,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
     /**
      * number of turns this item have stayed in this world
      */
-    private int turns;
+    private final int turns;
     /**
      * number of turns this item has buffed the actor
      */
@@ -55,11 +55,9 @@ public class PowerStar extends MagicalItem implements TradableItem {
     @Override
     public void tick(Location currentLocation) {
         //Remove this item from location after 10 turns in the world
-        if (turns == 10){
+        if (turns == 100000){
             currentLocation.removeItem(this);
         }
-
-        turns += 1;
 
         super.tick(currentLocation);
     }
@@ -72,11 +70,9 @@ public class PowerStar extends MagicalItem implements TradableItem {
     @Override
     public void tick(Location currentLocation, Actor actor) {
         //Remove this item from actor after 10 turns in the world
-        if (turns == 10){
+        if (turns == 100000){
             actor.removeItemFromInventory(this);
         }
-
-        turns += 1;
 
         super.tick(currentLocation, actor);
     }
@@ -87,9 +83,9 @@ public class PowerStar extends MagicalItem implements TradableItem {
      * @param actor
      */
     @Override
-    public String consume(Actor actor) {
+    public void consume(Actor actor) {
         //Set buffed actor
-        String output = super.consume(actor);
+        super.consume(actor);
         //Increase max hp of the actor
         actor.heal(increaseHp);
         //Add capability of this item to the actor
@@ -98,7 +94,6 @@ public class PowerStar extends MagicalItem implements TradableItem {
         //Update effect turns
         effectTurns = 10;
 
-        return output;
     }
 
     /**

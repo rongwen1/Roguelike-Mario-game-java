@@ -12,7 +12,7 @@ public interface ConsumableItem {
      * Empty method that contains buffs after it is consumed by actor
      * @param actor that consumes this item
      */
-    String consume(Actor actor);
+    void consume(Actor actor);
 
     /**
      * method that adds capability to the actor

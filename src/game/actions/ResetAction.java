@@ -8,11 +8,18 @@ import game.actors.Player;
 import game.managers.ResetManager;
 
 public class ResetAction extends Action {
+    private Item item;
+
+    public ResetAction(Item item) {
+        this.item = item;
+    }
 
     @Override
     public String execute(Actor actor, GameMap map) {
         ResetManager.getInstance().run();
 
+        //Remove item from actor
+        actor.removeItemFromInventory(this.item);
         return "The game has been reset";
     }
 

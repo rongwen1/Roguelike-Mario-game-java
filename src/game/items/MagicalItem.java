@@ -91,8 +91,7 @@ public abstract class MagicalItem extends Item implements ConsumableItem {
      * @param actor
      */
     @Override
-    public String consume(Actor actor) {
+    public void consume(Actor actor) {
         buffedActor = actor;
-        return actor.toString() + " consumes " + this;
     }
 }
