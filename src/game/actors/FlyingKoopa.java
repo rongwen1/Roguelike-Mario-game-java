@@ -9,7 +9,7 @@ public class FlyingKoopa extends Koopa {
     private static final List<String> opts = new ArrayList<>(DIALOG_OPTS); // not an actual constant
 
     public FlyingKoopa() {
-        super(150);
+        super("Flying Koopa", 'F', 150);
         opts.add("Pam pam pam!");
     }
 

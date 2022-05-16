@@ -16,19 +16,22 @@ public class Koopa extends Enemy {
             "Koopi koopi koopii~!");
 
     /**
-     * Constructor.
+     * Constructor for spawning Koopas.
      */
     public Koopa() {
-        this(100); // default hit points
+        this("Koopa", 'k', 100); // default hit points
     }
 
     /**
-     * Constructor with an argument for koopa's hit points.
+     * Constructor with an argument for koopa's hit points, amongst other attributes. Used for
+     * extending Koopa. Also holds default initialization logic for other constructor signatures.
      *
+     * @param name the name of the Actor
+     * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints the Actor's starting hit points
      */
-    public Koopa(int hitPoints) {
-        super("Koopa", 'k', hitPoints, true);
+    public Koopa(String name, char displayChar, int hitPoints) {
+        super(name, displayChar, hitPoints, true);
         // DefeatAction is bypassed - if Koopa had droppable items, they will not be dropped
         super.actionOnSelfDefeat = new DormantAction();
     }

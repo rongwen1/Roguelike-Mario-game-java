@@ -6,15 +6,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.interfaces.Talkable;
 
 /**
- * Action performed on the Toad to obtain a random dialog line.
- *
- * @see game.actors.Toad
+ * Action performed on the supplied {@code target} to obtain a random dialog line.
  */
-public class ToadConverseAction extends Action {
+public class ConverseAction extends Action {
 
     private final Talkable target;
 
-    public ToadConverseAction(Talkable target) {
+    public ConverseAction(Talkable target) {
         super();
         this.target = target;
     }

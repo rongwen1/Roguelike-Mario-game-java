@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Application;
-import game.actions.ToadConverseAction;
+import game.actions.ConverseAction;
 import game.actions.TradeAction;
 import game.enums.Status;
 import game.interfaces.Talkable;
@@ -70,7 +70,7 @@ public class Toad extends Actor implements Talkable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
-        actions.add(new ToadConverseAction(this));
+        actions.add(new ConverseAction(this));
 
         for (int i = 0; i < items.size(); i++) {
             actions.add(new TradeAction(items.get(i), tradableItems.get(i)));
