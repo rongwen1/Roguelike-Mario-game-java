@@ -12,7 +12,7 @@ import game.enums.Status;
 import game.interfaces.Resettable;
 import game.items.Bottle;
 import game.managers.ConsumedItemManager;
-import game.managers.LocationMemoryManager;
+import game.managers.MemoryManager;
 import game.managers.ResetManager;
 import game.managers.WalletManager;
 
@@ -44,7 +44,10 @@ public class Player extends Actor implements Resettable {
      */
     private int baseDamage;
 
-    private LocationMemoryManager memory;
+    /**
+     * Instance of MemoryManager
+     */
+    private final  MemoryManager memoryManager;
 
 
 
@@ -65,7 +68,7 @@ public class Player extends Actor implements Resettable {
         this.addItemToInventory(Bottle.getInstance());
         //Set base damage as 5
         baseDamage = 5;
-        memory = LocationMemoryManager.getInstance();
+        memoryManager = MemoryManager.getInstance();
     }
 
     /**
@@ -108,11 +111,11 @@ public class Player extends Actor implements Resettable {
         //For testing. Prints out player damage
         System.out.println("Base damage: " + baseDamage);
         ////For testing. Check actor's capabilities every turn////
-        System.out.println("Actor's capabilities: ");
-        List<Enum<?>> status = this.capabilitiesList();
-        for (Enum<?> stat : status) {
-            System.out.println(stat.toString());
-        }
+//        System.out.println("Actor's capabilities: ");
+//        List<Enum<?>> status = this.capabilitiesList();
+//        for (Enum<?> stat : status) {
+//            System.out.println(stat.toString());
+//        }
 
         // return/print the console menu
         return menu.showMenu(this, actions, display);

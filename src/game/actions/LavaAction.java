@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.interfaces.Jumpable;
 
 public class LavaAction extends Action {
     private String direction;
@@ -16,7 +15,6 @@ public class LavaAction extends Action {
      * @param direction Direction of the jumpable ground from actor
      */
     public LavaAction(String direction, Location location){
-
         this.direction = direction;
         this.location = location;
     }
@@ -30,6 +28,6 @@ public class LavaAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " move to " + direction + " lava";
+        return actor + " move to " + direction + " Lava";
     }
 }
