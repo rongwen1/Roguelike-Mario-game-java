@@ -2,6 +2,7 @@ package game.actors;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.DormantAction;
+import java.util.List;
 
 /**
  * Koopa Troopas, commonly shortened to Koopas or Troopas, known in Japan as Nokonoko, are reptilian
@@ -9,6 +10,10 @@ import game.actions.DormantAction;
  * retreat inside their shells.
  */
 public class Koopa extends Enemy {
+
+    protected static final List<String> DIALOG_OPTS = List.of(
+            "Never gonna make you cry!",
+            "Koopi koopi koopii~!");
 
     /**
      * Constructor.
@@ -26,6 +31,11 @@ public class Koopa extends Enemy {
         super("Koopa", 'k', hitPoints, true);
         // DefeatAction is bypassed - if Koopa had droppable items, they will not be dropped
         super.actionOnSelfDefeat = new DormantAction();
+    }
+
+    @Override
+    public List<String> getDialog() {
+        return DIALOG_OPTS;
     }
 
     /**

@@ -14,6 +14,7 @@ import game.behaviours.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.interfaces.Resettable;
+import game.interfaces.Talkable;
 import game.managers.ResetManager;
 import java.util.Map;
 import java.util.TreeMap;
@@ -21,7 +22,7 @@ import java.util.TreeMap;
 /**
  * A base class for shared logic of enemies in the game.
  */
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, Talkable {
 
     /**
      * An ordered dictionary of behaviors for the current Enemy, indexed and ordered by their
@@ -33,6 +34,8 @@ public abstract class Enemy extends Actor implements Resettable {
      * The action for the current Enemy to perform if said Enemy is defeated.
      */
     protected Action actionOnSelfDefeat = new DefeatAction();
+
+    private int tick = 0;
 
     /**
      * Constructor with three arguments.
@@ -91,6 +94,9 @@ public abstract class Enemy extends Actor implements Resettable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (tick++ % 2 == 0) {
+            processDialog(display);
+        }
         for (Behaviour Behaviour : behaviours.values()) {
             Action action = Behaviour.getAction(this, map);
             if (action != null) {

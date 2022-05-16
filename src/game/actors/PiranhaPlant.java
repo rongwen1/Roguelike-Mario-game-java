@@ -2,8 +2,13 @@ package game.actors;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import java.util.List;
 
 public class PiranhaPlant extends Enemy {
+
+    private static final List<String> DIALOG_OPTS = List.of(
+            "Slsstssthshs~! (Never gonna say goodbye~)",
+            "Ohmnom nom nom nom.");
 
     /**
      * Constructor.
@@ -20,6 +25,11 @@ public class PiranhaPlant extends Enemy {
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(90, "chomps"); // 50% hit rate
+    }
+
+    @Override
+    public List<String> getDialog() {
+        return DIALOG_OPTS;
     }
 
     @Override

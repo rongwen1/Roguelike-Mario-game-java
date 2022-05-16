@@ -2,8 +2,15 @@ package game.actors;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.items.HandcuffKeys;
+import java.util.List;
 
 public class Bowser extends Enemy {
+
+    private static final List<String> DIALOG_OPTS = List.of(
+            "What was that sound? Oh, just a fire.",
+            "Princess Peach! You are formally invited... to the creation of my new kingdom!",
+            "Never gonna let you down!",
+            "Wrrrrrrrrrrrrrrrryyyyyyyyyyyyyy!!!!");
 
     /**
      * Constructor.
@@ -11,6 +18,11 @@ public class Bowser extends Enemy {
     public Bowser() {
         super("Bowser", 'B', 500, false);
         this.addItemToInventory(new HandcuffKeys()); // item to drop
+    }
+
+    @Override
+    public List<String> getDialog() {
+        return DIALOG_OPTS;
     }
 
     /**

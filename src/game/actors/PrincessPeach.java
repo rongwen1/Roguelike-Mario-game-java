@@ -6,9 +6,17 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.enums.Status;
+import game.interfaces.Talkable;
+import java.util.List;
 
-public class PrincessPeach extends Actor {
+public class PrincessPeach extends Actor implements Talkable {
+
+    private int tick = 0;
+
+    private static final List<String> DIALOG_OPTS = List.of(
+            "Dear Mario, I'll be waiting for you...",
+            "Never gonna give you up!",
+            "Release me, or I will kick you!");
 
     /**
      * Constructor.
@@ -27,7 +35,15 @@ public class PrincessPeach extends Actor {
     }
 
     @Override
+    public List<String> getDialog() {
+        return DIALOG_OPTS;
+    }
+
+    @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (tick++ % 2 == 0) {
+            processDialog(display);
+        }
         return new DoNothingAction();
     }
 
