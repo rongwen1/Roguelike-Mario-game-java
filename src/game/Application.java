@@ -41,7 +41,7 @@ public class Application {
      * for Player, replaceable using the method {@code addPlayer()}.
      */
     private static final Player currentPlayer =
-            new Player("Mario", 'm', 100); // not an immutable constant
+            new Player("Mario", 'm', 500); // not an immutable constant
 
     /**
      * Returns the current player.
@@ -78,12 +78,12 @@ public class Application {
                 "...................................................#............................",
                 "....................................................#...........................",
                 "...................+.................................#..........................",
-                "......................................................#.........................",
+                "........................................C.............#.........................",
                 "..............................H.A...........C..........##.......................");
 
         List<String> secondMap = Arrays.asList(
                 "C.....+.....L...................",
-                ".........L.............T........",
+                ".L.......L.............T........",
                 "......+.........................",
                 "................L......t........",
                 ".....................+..........",
@@ -98,10 +98,9 @@ public class Application {
         GameMap secondGameMap = new GameMap(groundFactory, secondMap);
         world.addGameMap(secondGameMap);
 
-        MemoryManager.getInstance()
-                .appendActorLocation(MemoryManager.getInstance().actorLocationMap(secondGameMap));
-
-        MemoryManager.getInstance().appendLastGameMap(secondGameMap);
+        MemoryManager.getInstance().appendGameMap(gameMap);
+        MemoryManager.getInstance().appendGameMap(secondGameMap);
+        MemoryManager.getInstance().appendNextLocation(new Location(secondGameMap,0,0));
 
         // add actors
         gameMap.at(43, 10).addActor(new Toad());
@@ -145,8 +144,6 @@ public class Application {
                 i += 1;
             }
         }
-
-        MemoryManager.getInstance().appendWorld(world);
 
         world.run();
     }
