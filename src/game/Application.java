@@ -78,7 +78,7 @@ public class Application {
                 "...................................................#............................",
                 "....................................................#...........................",
                 "...................+.................................#..........................",
-                ".......................................C..............#.........................",
+                "......................................................#.........................",
                 "..............................H.A...........C..........##.......................");
 
         List<String> secondMap = Arrays.asList(
@@ -105,8 +105,8 @@ public class Application {
 
         // add actors
         gameMap.at(43, 10).addActor(new Toad());
-//        world.addPlayer(currentPlayer, gameMap.at(42, 17));
-        world.addPlayer(currentPlayer, secondGameMap.at(5, 5));
+        world.addPlayer(currentPlayer, gameMap.at(42, 17));
+        //world.addPlayer(currentPlayer, secondGameMap.at(5, 5));
         secondGameMap.at(24, 8).addActor(new Bowser());
         secondGameMap.at(25, 8).addActor(new PrincessPeach());
 

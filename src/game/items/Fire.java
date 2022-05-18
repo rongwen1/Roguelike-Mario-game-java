@@ -21,12 +21,11 @@ public class Fire extends Item {
     public void tick(Location currentLocation) {
         // Hurt actor that stands on top of this fire (item)
         if (currentLocation.containsAnActor()){   //Check if there is actor standing on this item
+            //Get the actor at current location
             Actor actor = currentLocation.getActor();
-            if (actor instanceof Enemy){   //If actor standing on this item is enemy (only hurt the enemy)
-                actor.hurt(damage);
-                System.out.println(actor.toString() + " has burned, -" + damage + " hit points");
-            }
-
+            //Hurt the actor
+            actor.hurt(damage);
+            System.out.println(actor + " has burned, -" + damage + " hit points");
         }
 
         // Remove from map after 3 turns in the world
