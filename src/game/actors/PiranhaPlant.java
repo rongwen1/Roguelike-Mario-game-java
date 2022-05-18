@@ -38,9 +38,8 @@ public class PiranhaPlant extends Enemy {
 
     @Override
     public void resetInstance() {
-        super.resetInstance();
-        increaseMaxHp(50);
-        // TODO finish
+        // no defeat on reset
+        increaseMaxHp(50); // auto heals to max
     }
 
 }

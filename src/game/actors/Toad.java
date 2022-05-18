@@ -76,7 +76,6 @@ public class Toad extends Actor implements Talkable {
         for (int i = 0; i < items.size(); i++) {
             actions.add(new TradeAction(items.get(i), tradableItems.get(i)));
         }
-        actions.add(new VictoryAction());
 
         return actions;
     }

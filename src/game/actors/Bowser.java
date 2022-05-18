@@ -42,7 +42,6 @@ public class Bowser extends Enemy {
         // no defeat on reset
         heal(getMaxHp());
         followNewActor(null);
-        // TODO move to orig pos
     }
 
 }

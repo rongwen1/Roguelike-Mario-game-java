@@ -49,7 +49,7 @@ Application
 - spawn Peach Bowser in close vicinity on second map
 
 bowser move to orig pos
-pplant spawned with reset not attackable?
+pplant spawned with reset not attackable? 
 
 ---
 

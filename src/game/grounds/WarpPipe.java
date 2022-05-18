@@ -79,7 +79,7 @@ public class WarpPipe extends HighGround implements Resettable {
      */
     @Override
     public void resetInstance() {
-        // reset to false, causing tick() to run the logic again, after the warppipe ground has
+        // Reset to false, causing tick() to run the logic again, after the warppipe ground has
         // already instantiated.
         addedPlant = false;
     }

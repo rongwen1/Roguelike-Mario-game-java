@@ -8,7 +8,7 @@ public class HandcuffKeys extends Item {
     /***
      * Constructor.
      */
-    public HandcuffKeys(){
+    public HandcuffKeys() {
         super("Handcuff Keys", 'k', true);
         this.addCapability(Status.UNLOCKS_PEACH_HANDCUFFS);
     }

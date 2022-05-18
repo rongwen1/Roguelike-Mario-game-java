@@ -5,9 +5,11 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.Bowser;
 import game.actors.Goomba;
 import game.actors.Koopa;
 import game.actors.Player;
+import game.actors.PrincessPeach;
 import game.actors.Toad;
 import game.grounds.Dirt;
 import game.grounds.Floor;
@@ -20,6 +22,7 @@ import game.grounds.Sprout;
 import game.grounds.Wall;
 import game.grounds.WarpPipe;
 import game.items.Coin;
+import game.items.HandcuffKeys;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.managers.MemoryManager;
@@ -95,11 +98,17 @@ public class Application {
         GameMap secondGameMap = new GameMap(groundFactory, secondMap);
         world.addGameMap(secondGameMap);
 
-        secondGameMap.at(6, 6).addActor(new Koopa());
         MemoryManager.getInstance()
                 .appendActorLocation(MemoryManager.getInstance().actorLocationMap(secondGameMap));
 
         MemoryManager.getInstance().appendLastGameMap(secondGameMap);
+
+        // add actors
+        gameMap.at(43, 10).addActor(new Toad());
+//        world.addPlayer(currentPlayer, gameMap.at(42, 17));
+        world.addPlayer(currentPlayer, secondGameMap.at(5, 5));
+        secondGameMap.at(24, 8).addActor(new Bowser());
+        secondGameMap.at(25, 8).addActor(new PrincessPeach());
 
         ////////RW_TESTING////////
         //Add ground
@@ -113,16 +122,11 @@ public class Application {
         gameMap.at(41, 16).addItem(powerStar);
         Coin coin = new Coin(20);
         gameMap.at(43, 17).addItem(coin);
-        gameMap.at(43, 10).addActor(new Toad());
-
-        world.addPlayer(currentPlayer, gameMap.at(42, 17));
-        //world.addPlayer(mario, secondGameMap.at(5, 5));
 
         //Actor mario = new Player("Player", 'm', 100);
         //world.addPlayer(mario, gameMap.at(42, 10));
-        // FIXME: the Goomba should be generated from the Tree
-        gameMap.at(35, 10).addActor(new Goomba());
-        gameMap.at(35, 15).addActor(new Koopa());
+//        gameMap.at(35, 10).addActor(new Goomba());
+//        gameMap.at(35, 15).addActor(new Koopa());
 
         //Add 5-7 sprouts and warp pipe randomly onto the map
         Random r = new Random();

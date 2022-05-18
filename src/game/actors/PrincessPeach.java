@@ -31,7 +31,7 @@ public class PrincessPeach extends Actor implements Talkable {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.UNLOCKS_PEACH_HANDCUFFS)) {
-            actions.add(new VictoryAction());
+            actions.add(new VictoryAction(this));
         }
         return actions;
     }

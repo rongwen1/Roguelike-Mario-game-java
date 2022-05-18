@@ -26,9 +26,9 @@ public class Koopa extends Enemy {
      * Constructor with an argument for koopa's hit points, amongst other attributes. Used for
      * extending Koopa. Also holds default initialization logic for other constructor signatures.
      *
-     * @param name the name of the Actor
+     * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints the Actor's starting hit points
+     * @param hitPoints   the Actor's starting hit points
      */
     public Koopa(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints, true);
