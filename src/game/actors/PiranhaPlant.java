@@ -14,7 +14,7 @@ public class PiranhaPlant extends Enemy {
      * Constructor.
      */
     public PiranhaPlant() {
-        super("Piranha Plant", 'Y', 10, false);
+        super("Piranha Plant", 'Y', 150, false);
     }
 
     /**
