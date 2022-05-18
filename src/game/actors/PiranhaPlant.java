@@ -34,7 +34,7 @@ public class PiranhaPlant extends Enemy {
 
     @Override
     public void followNewActor(Actor target) {
-    } // empty method callback, as this Enemy does not follow
+    } // override with empty method callback, as this Enemy does not follow
 
     @Override
     public void resetInstance() {

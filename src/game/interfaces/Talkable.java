@@ -7,6 +7,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Interface for Actors capable of providing spontaneous dialog.
+ * <br> Uses an interface to implement default methods, emulating multiple inheritance of abstract
+ * classes in other languages.
+ */
 public interface Talkable {
 
     /**
