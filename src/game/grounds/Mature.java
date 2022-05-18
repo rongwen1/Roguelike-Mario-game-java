@@ -1,6 +1,7 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.FlyingKoopa;
 import game.actors.Koopa;
 
 import java.util.ArrayList;
@@ -31,6 +32,10 @@ public class Mature extends Tree {
      * Chance to spawn koopa in %
      */
     private static final int SPAWN_KOOPA_CHANCE = 15;
+    /**
+     * Chance to spawn flyingkoopa instead of koopa in %
+     */
+    private static final int SPAWN_FLYING_KOOPA_INSTEAD_CHANCE = 50;
     /**
      * Chance to die (Become dirt) in %
      */
@@ -63,7 +68,9 @@ public class Mature extends Tree {
         //15% chance to spawn Koopa from Sprout
         result = r.nextInt(100) + 1;   //Generate random number between 1 and 100 inclusive
         if (result <= SPAWN_KOOPA_CHANCE && location.getActor() == null) {
-            location.addActor(new Koopa());
+            result = r.nextInt(100) + 1; //Generate random number between 1 and 100 inclusive
+            location.addActor(result <= SPAWN_FLYING_KOOPA_INSTEAD_CHANCE
+                    ? new FlyingKoopa() : new Koopa());
         }
 
         //Grow Sprout in one of the surrounding fertile squares every 5 turn.

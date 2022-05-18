@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.VictoryAction;
+import game.enums.Status;
 import game.interfaces.Talkable;
 import java.util.List;
 
@@ -28,9 +30,9 @@ public class PrincessPeach extends Actor implements Talkable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         final ActionList actions = super.allowableActions(otherActor, direction, map);
-//        if (otherActor.hasCapability(Status.statushere)) {
-//            actions.add(new VictoryAction());
-//        }
+        if (otherActor.hasCapability(Status.UNLOCKS_PEACH_HANDCUFFS)) {
+            actions.add(new VictoryAction());
+        }
         return actions;
     }
 

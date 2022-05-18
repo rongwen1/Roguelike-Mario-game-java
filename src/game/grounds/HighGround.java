@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.FlyingKoopa;
 import game.items.Coin;
 import game.actions.JumpAction;
 import game.interfaces.Jumpable;
@@ -32,13 +33,9 @@ public abstract class HighGround extends Ground implements Jumpable {
     @Override
     public boolean canActorEnter(Actor actor) {
 		// Player can walk to the high ground, no need to jump after consuming power star
-        if(actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+		return actor.hasCapability(Status.DESTROY_HIGHER_GROUND_TO_$5COIN)
+				|| actor instanceof FlyingKoopa;
+	}
 
 	/**
 	 * Returns a new Action list.

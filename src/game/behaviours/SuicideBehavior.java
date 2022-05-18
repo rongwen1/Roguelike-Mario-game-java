@@ -20,7 +20,22 @@ public class SuicideBehavior implements Behaviour {
     /**
      * Chance of performing DefeatAction when getAction is called.
      */
-    private static final double DEFEAT_CHANCE = 0.1;
+    private double defeatChance = 0.1;
+
+    /**
+     * Constructor.
+     */
+    public SuicideBehavior() {
+    }
+
+    /**
+     * Constructor with configurable defeat chance.
+     *
+     * @param defeatChance chance of performing DefeatAction when getAction is called.
+     */
+    public SuicideBehavior(double defeatChance) {
+        this.defeatChance = defeatChance;
+    }
 
     /**
      * Performs a random roll to determine returning nothing or a new DefeatAction
@@ -31,8 +46,8 @@ public class SuicideBehavior implements Behaviour {
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if (r.nextDouble() < DEFEAT_CHANCE) {
-            return new DefeatAction();
+        if (r.nextDouble() < defeatChance) {
+            return new DefeatAction(false); // do not drop items on non-player kill defeat
         }
         return null;
     }

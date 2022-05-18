@@ -1,6 +1,7 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.enums.Status;
 import game.items.HandcuffKeys;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class Bowser extends Enemy {
      */
     public Bowser() {
         super("Bowser", 'B', 500, false);
-        this.addItemToInventory(new HandcuffKeys()); // item to drop
+        addItemToInventory(new HandcuffKeys()); // item to drop
+        addCapability(Status.DROP_FIRE_WHEN_ATTACK);
     }
 
     @Override
@@ -37,9 +39,10 @@ public class Bowser extends Enemy {
 
     @Override
     public void resetInstance() {
-        super.resetInstance();
+        // no defeat on reset
         heal(getMaxHp());
-        // TODO finish
+        followNewActor(null);
+        // TODO move to orig pos
     }
 
 }

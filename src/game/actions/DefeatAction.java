@@ -12,6 +12,26 @@ import edu.monash.fit2099.engine.positions.GameMap;
 public class DefeatAction extends Action {
 
     /**
+     * If items should drop on defeat.
+     */
+    private boolean dropItems = true;
+
+    /**
+     * Constructor.
+     */
+    public DefeatAction() {
+    }
+
+    /**
+     * Constructor with configuration for dropItems.
+     *
+     * @param dropItems if items should drop on defeat.
+     */
+    public DefeatAction(boolean dropItems) {
+        this.dropItems = dropItems;
+    }
+
+    /**
      * Perform the Action.
      *
      * @param actor the actor performing the action.
@@ -20,13 +40,15 @@ public class DefeatAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        ActionList dropActions = new ActionList();
-        // drop all items
-        for (Item item : actor.getInventory()) {
-            dropActions.add(item.getDropAction(actor));
-        }
-        for (Action drop : dropActions) {
-            drop.execute(actor, map);
+        if (dropItems) {
+            ActionList dropActions = new ActionList();
+            // drop all items
+            for (Item item : actor.getInventory()) {
+                dropActions.add(item.getDropAction(actor));
+            }
+            for (Action drop : dropActions) {
+                drop.execute(actor, map);
+            }
         }
         // remove actor
         map.removeActor(actor);

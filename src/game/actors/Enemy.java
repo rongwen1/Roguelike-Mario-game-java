@@ -10,6 +10,7 @@ import game.actions.AttackAction;
 import game.actions.DefeatAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
+import game.behaviours.SuicideBehavior;
 import game.behaviours.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
@@ -47,11 +48,11 @@ public abstract class Enemy extends Actor implements Resettable, Talkable {
      */
     public Enemy(String name, char displayChar, int hitPoints, boolean doesWander) {
         super(name, displayChar, hitPoints);
-        this.behaviours.put(10, new AttackBehaviour(new DefeatAction()));
+        behaviours.put(10, new AttackBehaviour(new DefeatAction()));
         if (doesWander) {
-            this.behaviours.put(30, new WanderBehaviour());
+            behaviours.put(30, new WanderBehaviour());
         }
-        ResetManager.getInstance().appendResetInstance(this);
+        registerInstance();
     }
 
     /**
@@ -74,13 +75,18 @@ public abstract class Enemy extends Actor implements Resettable, Talkable {
     }
 
     /**
-     * Swap to a new Actor for the current Enemy to follow.
+     * Swap to a new Actor for the current Enemy to follow, or stop following the current follow
+     * target.
      *
-     * @param target the new actor to follow.
+     * @param target the new actor to follow, or null if to reset the target to follow.
      */
     public void followNewActor(Actor target) {
         // relies on the fact that behaviors is a map - 20 being the slot for a single FollowBehavior
-        behaviours.put(20, new FollowBehaviour(target));
+        if (target != null) {
+            behaviours.put(20, new FollowBehaviour(target));
+        } else {
+            behaviours.remove(20);
+        }
     }
 
     /**
@@ -111,7 +117,7 @@ public abstract class Enemy extends Actor implements Resettable, Talkable {
      */
     @Override
     public void resetInstance() {
-//        new DefeatAction().execute(this);
+        behaviours.put(1, new SuicideBehavior(1d));// unconditional defeat on reset
     }
 
 }

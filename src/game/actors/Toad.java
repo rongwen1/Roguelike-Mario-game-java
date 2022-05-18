@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.Application;
 import game.actions.ConverseAction;
 import game.actions.TradeAction;
+import game.actions.VictoryAction;
 import game.enums.Status;
 import game.interfaces.Talkable;
 import game.interfaces.TradableItem;
@@ -75,6 +76,7 @@ public class Toad extends Actor implements Talkable {
         for (int i = 0; i < items.size(); i++) {
             actions.add(new TradeAction(items.get(i), tradableItems.get(i)));
         }
+        actions.add(new VictoryAction());
 
         return actions;
     }

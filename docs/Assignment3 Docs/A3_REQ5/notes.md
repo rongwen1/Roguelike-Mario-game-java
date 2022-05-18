@@ -1,5 +1,5 @@
 Talkable interface
-- String getDialog(List<String> opts) -- what's currently in TCA.execute(), actor to this
+- getDialog - what's currently in TCA.execute(), actor to this
 - random choice, but always once after %2 turn, tracked in implementer itself (instantiation)
 
 PrincessPeach, Toad, Enemy implements Talkable
