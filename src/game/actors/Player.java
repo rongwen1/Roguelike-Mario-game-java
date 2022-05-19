@@ -62,7 +62,7 @@ public class Player extends Actor implements Resettable {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         consumedItemManager = ConsumedItemManager.getInstance();
-        ResetManager.getInstance().appendResetInstance(this);
+        registerInstance();
         hasReset = false;
         //Add bottle to player
         this.addItemToInventory(Bottle.getInstance());
@@ -155,6 +155,7 @@ public class Player extends Actor implements Resettable {
     public void resetInstance() {
         heal(getMaxHp());
         capabilitiesList().forEach(this::removeCapability);
+        this.addCapability(Status.HOSTILE_TO_ENEMY);
     }
 
     private void toggleHasReset() {

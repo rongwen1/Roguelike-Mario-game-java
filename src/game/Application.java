@@ -6,8 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Bowser;
-import game.actors.Goomba;
-import game.actors.Koopa;
+import game.actors.FlyingKoopa;
 import game.actors.Player;
 import game.actors.PrincessPeach;
 import game.actors.Toad;
@@ -22,10 +21,10 @@ import game.grounds.Sprout;
 import game.grounds.Wall;
 import game.grounds.WarpPipe;
 import game.items.Coin;
-import game.items.HandcuffKeys;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.managers.MemoryManager;
+import game.weapons.Wrench;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -41,7 +40,7 @@ public class Application {
      * for Player, replaceable using the method {@code addPlayer()}.
      */
     private static final Player currentPlayer =
-            new Player("Mario", 'm', 500); // not an immutable constant
+            new Player("Mario", 'm', 50); // not an immutable constant
 
     /**
      * Returns the current player.
@@ -100,12 +99,12 @@ public class Application {
 
         MemoryManager.getInstance().appendGameMap(gameMap);
         MemoryManager.getInstance().appendGameMap(secondGameMap);
-        MemoryManager.getInstance().appendNextLocation(new Location(secondGameMap,0,0));
+        MemoryManager.getInstance().appendNextLocation(new Location(secondGameMap, 0, 0));
 
         // add actors
         gameMap.at(43, 10).addActor(new Toad());
         world.addPlayer(currentPlayer, gameMap.at(42, 17));
-        //world.addPlayer(currentPlayer, secondGameMap.at(5, 5));
+//        world.addPlayer(currentPlayer, secondGameMap.at(5, 5));
         secondGameMap.at(24, 8).addActor(new Bowser());
         secondGameMap.at(25, 8).addActor(new PrincessPeach());
 

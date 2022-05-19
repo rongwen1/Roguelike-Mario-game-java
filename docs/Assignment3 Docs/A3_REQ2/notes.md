@@ -6,6 +6,7 @@ Bowser extends Enemy
 - reset (enemy override) reset attacktarget, max heal, move to orig pos (save orig pos somehow)
 - overrides weapon, no wander, drops handcuff keys
 - add attackaction cons for passing in additional custom attack effects
+- keeps track of Location to return to
 
 PiranhaPlant extends Enemy
 - overrides weapon, no wander follow (but auto attack) - override follow-add method in enemy
@@ -43,13 +44,8 @@ WarpPipe
 - spawn PiranhaPlant once at second turn at start of game
 - spawn PiranhaPlant immediately after reset if nonexistent
 
-### todo
-
 Application
 - spawn Peach Bowser in close vicinity on second map
-
-bowser move to orig pos
-pplant spawned with reset not attackable? 
 
 ---
 

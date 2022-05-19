@@ -1,5 +1,10 @@
 package game.actors;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.enums.Status;
 import game.items.HandcuffKeys;
@@ -12,6 +17,8 @@ public class Bowser extends Enemy {
             "Princess Peach! You are formally invited... to the creation of my new kingdom!",
             "Never gonna let you down!",
             "Wrrrrrrrrrrrrrrrryyyyyyyyyyyyyy!!!!");
+    private boolean resetPosition = false;
+    private Location initialLocation;
 
     /**
      * Constructor.
@@ -38,10 +45,27 @@ public class Bowser extends Enemy {
     }
 
     @Override
+    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (initialLocation == null) {
+            // set location to where Bowser is when playTurn is first ran
+            initialLocation = map.locationOf(this);
+        }
+        if (resetPosition) {
+            if (!initialLocation.containsAnActor()) {
+                // will only move Bowser if its original location was empty, else it remains
+                map.moveActor(this, initialLocation);
+            }
+            resetPosition = false;
+        }
+        return super.playTurn(actions, lastAction, map, display);
+    }
+
+    @Override
     public void resetInstance() {
         // no defeat on reset
         heal(getMaxHp());
         followNewActor(null);
+        resetPosition = true;
     }
 
 }
