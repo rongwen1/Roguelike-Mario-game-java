@@ -20,6 +20,8 @@ Assignment 1 / 2
 Assignment 3
 - REQ2: by Ng Yen Kai (32217021)
 - REQ5: by Ng Yen Kai (32217021)
+- REQ3: by Teh Rong Wen (31882617)
+- REQ4: by Teh Rong Wen (31882617)
 
 ## Testing and Reviewing
 
