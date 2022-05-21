@@ -22,6 +22,7 @@ Assignment 3
 - REQ5: by Ng Yen Kai (32217021)
 - REQ3: by Teh Rong Wen (31882617)
 - REQ4: by Teh Rong Wen (31882617)
+- REQ1: by Lim Seng Onn (32200250) 
 
 ## Testing and Reviewing
 
