@@ -3,8 +3,8 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.interfaces.NonMultiTurnBuff;
-import game.interfaces.ConsumableItem;
+import game.interfaces.NonMultiTurnBuffItem;
+import game.interfaces.MultiTurnBuffItem;
 import game.managers.ConsumedItemManager;
 
 /**
@@ -15,25 +15,25 @@ public class ConsumeAction extends Action {
     /**
      * Stores instance of consumable item
      */
-    private final ConsumableItem consumableItem;
-    private final NonMultiTurnBuff nonMultiturnBuff;
+    private final MultiTurnBuffItem multiturnBuffItem;
+    private final NonMultiTurnBuffItem nonMultiturnBuffItem;
 
     /**
      * Constructor for Consume Action
-     * @param consumableItem item that actor can consume
+     * @param multiturnBuffItem item that actor can consume
      */
-    public ConsumeAction(ConsumableItem consumableItem) {
-        this.consumableItem = consumableItem;
-        this.nonMultiturnBuff = null;
+    public ConsumeAction(MultiTurnBuffItem multiturnBuffItem) {
+        this.multiturnBuffItem = multiturnBuffItem;
+        this.nonMultiturnBuffItem = null;
     }
 
     /**
      * Constructor for Consume Action
      * @param item item that actor can consume
      */
-    public ConsumeAction(NonMultiTurnBuff item) {
-        this.nonMultiturnBuff = item;
-        this.consumableItem = null;
+    public ConsumeAction(NonMultiTurnBuffItem item) {
+        this.nonMultiturnBuffItem = item;
+        this.multiturnBuffItem = null;
     }
 
     /**
@@ -45,17 +45,17 @@ public class ConsumeAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String output = "";
-        if (this.consumableItem != null){
+        if (this.multiturnBuffItem != null){
             //run consume method. It outputs string to be printed after it is consumed.
-            output = this.consumableItem.consume(actor);
+            output = this.multiturnBuffItem.consume(actor);
             //Add ConsumableItem to ConsumedItemManager
-            ConsumedItemManager.getInstance().addConsumableItem(this.consumableItem);
+            ConsumedItemManager.getInstance().addConsumableItem(this.multiturnBuffItem);
             //Remove item from actor inventory
-            this.consumableItem.removeItemFromInventory();
+            this.multiturnBuffItem.removeItemFromInventory();
         }
-        else if (this.nonMultiturnBuff != null){
+        else if (this.nonMultiturnBuffItem != null){
             //run consume method. It outputs string to be printed after it is consumed.
-            output = this.nonMultiturnBuff.consume(actor);
+            output = this.nonMultiturnBuffItem.consume(actor);
         }
 
         //Return string to be printed
@@ -71,11 +71,11 @@ public class ConsumeAction extends Action {
     @Override
     public String menuDescription(Actor actor) {
         String output = "";
-        if (this.consumableItem != null){
-            output = actor.toString() + " consumes " + this.consumableItem;
+        if (this.multiturnBuffItem != null){
+            output = actor.toString() + " consumes " + this.multiturnBuffItem;
         }
-        else if (this.nonMultiturnBuff != null){
-            output = actor.toString() + " consumes " + this.nonMultiturnBuff;
+        else if (this.nonMultiturnBuffItem != null){
+            output = actor.toString() + " consumes " + this.nonMultiturnBuffItem;
         }
         return output;
     }

@@ -1,6 +1,6 @@
 package game.managers;
 
-import game.interfaces.ConsumableItem;
+import game.interfaces.MultiTurnBuffItem;
 import game.interfaces.Resettable;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ConsumedItemManager implements Resettable {
     /**
      * List of consumable item
      */
-    private final ArrayList<ConsumableItem> consumedItems;
+    private final ArrayList<MultiTurnBuffItem> consumedItems;
     /**
      * A singleton consumed item manager instance
      */
@@ -44,7 +44,7 @@ public class ConsumedItemManager implements Resettable {
      * Method that can append ConsumableItem into Arraylist of consumed items
      * @param item consumable item to be added
      */
-    public void addConsumableItem(ConsumableItem item){
+    public void addConsumableItem(MultiTurnBuffItem item){
         this.consumedItems.add(item);
     }
 
@@ -52,7 +52,7 @@ public class ConsumedItemManager implements Resettable {
      * Method that can remove ConsumableItem from Arraylist of consumed items
      * @param item consumable item to be removed
      */
-    public void removeConsumableItem(ConsumableItem item){
+    public void removeConsumableItem(MultiTurnBuffItem item){
         this.consumedItems.remove(item);
     }
 
@@ -63,17 +63,17 @@ public class ConsumedItemManager implements Resettable {
      */
     public void consumedItemTicker(){
         //Stores ConsumableItem to be removed
-        ArrayList<ConsumableItem> itemsToBeRemoved = new ArrayList<>();
+        ArrayList<MultiTurnBuffItem> itemsToBeRemoved = new ArrayList<>();
 
         //Tick consumed item. If item effect is over, removeBuff will return true.
-        for (ConsumableItem item: this.consumedItems) {
+        for (MultiTurnBuffItem item: this.consumedItems) {
             if (item.removeBuff()){
                 itemsToBeRemoved.add(item);
             }
         }
 
         //Iterate through items to be removed
-        for (ConsumableItem item: itemsToBeRemoved){
+        for (MultiTurnBuffItem item: itemsToBeRemoved){
             //Remove capability from actor
             item.removeCapabilityFromActor();
             //Remove item from consumedItems list
@@ -83,7 +83,7 @@ public class ConsumedItemManager implements Resettable {
 
         //After effect of item is removed from actor, ongoing item effects must be added again
         //to ensure other item effect does not get removed
-        for (ConsumableItem item: this.consumedItems){
+        for (MultiTurnBuffItem item: this.consumedItems){
             item.addCapabilityToActor();
         }
     }
@@ -94,15 +94,15 @@ public class ConsumedItemManager implements Resettable {
     @Override
     public void resetInstance() {
         //Stores ConsumableItem to be removed
-        ArrayList<ConsumableItem> itemsToBeRemoved = new ArrayList<>();
+        ArrayList<MultiTurnBuffItem> itemsToBeRemoved = new ArrayList<>();
 
         //Iterate through consumed items
-        for (ConsumableItem item: this.consumedItems){
+        for (MultiTurnBuffItem item: this.consumedItems){
             //Add item into itemsToBeRemoved
             itemsToBeRemoved.add(item);
         }
 
-        for (ConsumableItem item: itemsToBeRemoved){
+        for (MultiTurnBuffItem item: itemsToBeRemoved){
             //Remove capability from actor
             item.removeCapabilityFromActor();
             //Remove item from consumedItems list

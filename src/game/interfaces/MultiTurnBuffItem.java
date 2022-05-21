@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
  * Consumable Item interface that has methods to activate the buffs of item,
  * add/remove capability from actor.
  */
-public interface ConsumableItem {
+public interface MultiTurnBuffItem {
     /**
      * Empty method that contains buffs after it is consumed by actor
      * @param actor that consumes this item

@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-import game.interfaces.ConsumableItem;
+import game.interfaces.MultiTurnBuffItem;
 import game.actions.ConsumeAction;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  * Abstract class that represents consumable item that has buff
  * effect for several turns when consumed.
  */
-public abstract class MagicalItem extends Item implements ConsumableItem {
+public abstract class MagicalItem extends Item implements MultiTurnBuffItem {
     /**
      * Whether this item is current inside actor's inventory
      */

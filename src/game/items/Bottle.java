@@ -4,13 +4,13 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.interfaces.Drinkable;
-import game.interfaces.NonMultiTurnBuff;
+import game.interfaces.NonMultiTurnBuffItem;
 import game.actions.ConsumeAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bottle extends Item implements NonMultiTurnBuff {
+public class Bottle extends Item implements NonMultiTurnBuffItem {
     private final ArrayList<Drinkable> drinks;
     private static Bottle instance;
 
