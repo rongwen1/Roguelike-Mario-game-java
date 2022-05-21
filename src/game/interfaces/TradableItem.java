@@ -8,7 +8,7 @@ import game.managers.WalletManager;
  */
 public interface TradableItem {
     /**
-     *
+     * returns value of the item
      * @return the value of the item
      */
     int getValue();

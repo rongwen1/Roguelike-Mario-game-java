@@ -10,6 +10,12 @@ import game.actions.ConsumeAction;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>Bottle</h1>
+ * Singleton instance of item that actor can store in their inventory.
+ * Able to consume this bottle and drink drinkable item.
+ * Follows stacks when actor wants consume this item.
+ */
 public class Bottle extends Item implements NonMultiTurnBuffItem {
     private final ArrayList<Drinkable> drinks;
     private static Bottle instance;
@@ -33,6 +39,10 @@ public class Bottle extends Item implements NonMultiTurnBuffItem {
         return instance;
     }
 
+    /**
+     * Returns actions that can be performed by the actor
+     * @return list of action
+     */
     @Override
     public List<Action> getAllowableActions() {
         List<Action> actionList = new ArrayList<Action>();
@@ -43,15 +53,27 @@ public class Bottle extends Item implements NonMultiTurnBuffItem {
         return actionList;
     }
 
+    /**
+     * Append drinkable item drinks array
+     * @param drink
+     */
     public void appendDrink(Drinkable drink) {
         drinks.add(drink);
     }
 
+    /**
+     * Returns this item name
+     * @return
+     */
     @Override
     public String toString() {
         return super.toString() + this.drinkableArrayToString();
     }
 
+    /**
+     * returns drinks array to string
+     * @return drinks array in string
+     */
     private String drinkableArrayToString(){
         String output = "[";
         if (drinks.size() > 0){
@@ -64,6 +86,11 @@ public class Bottle extends Item implements NonMultiTurnBuffItem {
         return output;
     }
 
+    /**
+     * This method will run after actor consumes this item.
+     * It calls drinkable drink method. It removes item that is drinked
+     * @param actor that can consume this item
+     */
     @Override
     public String consume(Actor actor) {
         //take first item in arrayList

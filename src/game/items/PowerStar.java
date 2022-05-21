@@ -23,7 +23,9 @@ public class PowerStar extends MagicalItem implements TradableItem {
      * The amount of hp increase actor gets after it is consumed
      */
     private static final int increaseHp = 200;
-
+    /**
+     * price to buy this item
+     */
     private final int price;
 
     /**
@@ -149,7 +151,7 @@ public class PowerStar extends MagicalItem implements TradableItem {
     }
 
     /**
-     *
+     * return price of this item
      * @return An integer representing price of this item
      */
     @Override

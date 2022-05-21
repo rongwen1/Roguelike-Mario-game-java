@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * <h1>Application</h1>
  * The main class for the Mario World game.
  */
 public class Application {

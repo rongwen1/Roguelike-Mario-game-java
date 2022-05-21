@@ -2,6 +2,10 @@ package game.interfaces;
 
 import game.managers.ResetManager;
 
+/**
+ * <h1>Resettable</h1>
+ * Any class that implements this class will have capability to perform reset
+ */
 public interface Resettable {
 
     /**

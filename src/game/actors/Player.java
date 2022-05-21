@@ -20,7 +20,8 @@ import java.util.List;
 
 
 /**
- * Class representing the Player.
+ * <h1>Player</h1>
+ * Class representing the player
  */
 public class Player extends Actor implements Resettable {
 
@@ -121,6 +122,10 @@ public class Player extends Actor implements Resettable {
         return menu.showMenu(this, actions, display);
     }
 
+    /**
+     * Returns actor's display character
+     * @return character
+     */
     @Override
     public char getDisplayChar() {
         return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar())
@@ -143,6 +148,10 @@ public class Player extends Actor implements Resettable {
         return actions;
     }
 
+    /**
+     * When actor performs intrinsic attack
+     * @return Instinsic weapon which includes damage and the verb of attack
+     */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(baseDamage, "punches");
@@ -158,6 +167,9 @@ public class Player extends Actor implements Resettable {
         this.addCapability(Status.HOSTILE_TO_ENEMY);
     }
 
+    /**
+     * To toggle boolean has reset
+     */
     private void toggleHasReset() {
         this.hasReset = true;
     }

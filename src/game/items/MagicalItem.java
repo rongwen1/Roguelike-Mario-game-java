@@ -88,7 +88,7 @@ public abstract class MagicalItem extends Item implements MultiTurnBuffItem {
     /**
      * This method will run after actor consumes this item.
      * It will set buffs on actor that consumes this item
-     * @param actor
+     * @param actor actor that consume this item
      */
     @Override
     public String consume(Actor actor) {

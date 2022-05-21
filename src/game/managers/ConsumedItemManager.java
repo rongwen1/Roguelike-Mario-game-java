@@ -89,7 +89,7 @@ public class ConsumedItemManager implements Resettable {
     }
 
     /**
-     * Called when reset game
+     * Called when reset the game
      */
     @Override
     public void resetInstance() {
@@ -111,7 +111,7 @@ public class ConsumedItemManager implements Resettable {
     }
 
     /**
-     *
+     * Method that can add this into reset manager
      */
     @Override
     public void registerInstance() {

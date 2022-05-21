@@ -13,6 +13,9 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
      * The amount of hp increase actor gets after it is consumed
      */
     private static final int increaseMaxHp = 50;
+    /**
+     * price to buy this item
+     */
     private final int price;
 
     /**
@@ -38,7 +41,7 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
     /**
      * This method will run after actor consumes this item.
      * It will set buffs on actor that consumes this item
-     * @param actor
+     * @param actor actor that consume this item
      */
     @Override
     public String consume(Actor actor) {
@@ -88,7 +91,7 @@ public class SuperMushroom extends MagicalItem implements TradableItem {
         return flag;
     }
     /**
-     *
+     * return price of this item
      * @return An integer representing price of this item
      */
     @Override

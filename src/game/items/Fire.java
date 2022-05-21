@@ -5,9 +5,20 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Enemy;
 
+/**
+ * <h1>Fire</h1>
+ * Non portable item that hurts actor that stands on top of this item.
+ */
 public class Fire extends Item {
+    /**
+     * Number of turns that existed in the world
+     */
     private int turns;
+    /**
+     * Damage that will hurt the actor
+     */
     private static final int damage = 20;
+
     /***
      * Constructor.
      */
@@ -16,7 +27,10 @@ public class Fire extends Item {
         turns = 1;
     }
 
-
+    /**
+     * Called once per turn, so that items can experience the passage of time.
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         // Hurt actor that stands on top of this fire (item)
