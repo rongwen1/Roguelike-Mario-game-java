@@ -7,6 +7,15 @@ import edu.monash.fit2099.engine.actors.Actor;
  * Drinkable interface that has method to drink this water.
  */
 public interface Drinkable {
+    /**
+     * Empty method. Can add code to buff the actor.
+     * @param actor
+     */
     void drink(Actor actor);
+
+    /**
+     * empty method
+     * @return returns string
+     */
     String toString();
 }
