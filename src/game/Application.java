@@ -41,7 +41,7 @@ public class Application {
      * for Player, replaceable using the method {@code addPlayer()}.
      */
     private static final Player currentPlayer =
-            new Player("Mario", 'm', 50); // not an immutable constant
+            new Player("Mario", 'm', 500); // not an immutable constant
 
     /**
      * Returns the current player.
