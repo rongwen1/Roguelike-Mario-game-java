@@ -12,6 +12,11 @@ public class ConverseAction extends Action {
 
     private final Talkable target;
 
+    /**
+     * Constructor.
+     *
+     * @param target the actor to be spoken to by the actor executing the action.
+     */
     public ConverseAction(Talkable target) {
         super();
         this.target = target;
@@ -30,8 +35,8 @@ public class ConverseAction extends Action {
     }
 
     /**
-     * Returns a descriptive string to describe the action in the menu.
-     * Further assumes that {@code target}, ie. {@code Actor}, correctly implements toString().
+     * Returns a descriptive string to describe the action in the menu. Further assumes that {@code
+     * target}, ie. {@code Actor}, correctly implements toString().
      *
      * @param actor the actor performing the action.
      * @return the text we put on the menu.

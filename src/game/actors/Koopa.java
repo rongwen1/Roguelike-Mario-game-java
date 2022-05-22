@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class Koopa extends Enemy {
 
+    /**
+     * Immutable list of dialog options to be returned by {@code getDialog()}, preventing object
+     * creation on each call.
+     */
     protected static final List<String> DIALOG_OPTS = List.of(
             "Never gonna make you cry!",
             "Koopi koopi koopii~!");
@@ -36,6 +40,11 @@ public class Koopa extends Enemy {
         super.actionOnSelfDefeat = new DormantAction();
     }
 
+    /**
+     * Provides a list of possible dialog to be chosen from by {@code processDialog()}.
+     *
+     * @return a list of possible dialog to choose from.
+     */
     @Override
     public List<String> getDialog() {
         return DIALOG_OPTS;

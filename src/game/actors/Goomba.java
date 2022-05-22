@@ -9,6 +9,10 @@ import java.util.List;
  */
 public class Goomba extends Enemy {
 
+    /**
+     * Immutable list of dialog options to be returned by {@code getDialog()}, preventing object
+     * creation on each call.
+     */
     private static final List<String> DIALOG_OPTS = List.of(
             "Mugga mugga!",
             "Ugha ugha... (Never gonna run around and desert you...)",
@@ -22,6 +26,11 @@ public class Goomba extends Enemy {
         this.behaviours.put(1, new SuicideBehavior());
     }
 
+    /**
+     * Provides a list of possible dialog to be chosen from by {@code processDialog()}.
+     *
+     * @return a list of possible dialog to choose from.
+     */
     @Override
     public List<String> getDialog() {
         return DIALOG_OPTS;

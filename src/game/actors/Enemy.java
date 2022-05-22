@@ -16,7 +16,6 @@ import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.interfaces.Resettable;
 import game.interfaces.Talkable;
-import game.managers.ResetManager;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -36,6 +35,9 @@ public abstract class Enemy extends Actor implements Resettable, Talkable {
      */
     protected Action actionOnSelfDefeat = new DefeatAction();
 
+    /**
+     * Number of turns played by the game since this object's instantiation.
+     */
     private int tick = 0;
 
     /**
