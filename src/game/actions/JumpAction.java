@@ -8,6 +8,7 @@ import game.interfaces.Jumpable;
 import game.enums.Status;
 
 /**
+ * <h1>JumpAction</h1>
  * Special Action for jumping onto high ground.
  */
 public class JumpAction extends Action {

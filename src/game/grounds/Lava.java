@@ -6,6 +6,10 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Enemy;
 
+/**
+ * <h1>Lava</h1>
+ * A ground that will cause 15 hp damage on player when player stands on it
+ */
 public class Lava extends Ground {
 
     /**

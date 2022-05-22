@@ -12,6 +12,10 @@ import game.actors.Player;
 import game.interfaces.Resettable;
 import game.managers.MemoryManager;
 
+/**
+ * <h1>WarpPipe</h1>
+ * A ground that teleport player to Lava Zone.
+ */
 public class WarpPipe extends HighGround implements Resettable {
 
     /**
@@ -92,6 +96,13 @@ public class WarpPipe extends HighGround implements Resettable {
             // player on the lava zone
             else {
                 actor.addCapability(ON_LAVA_ZONE);
+                // kill the piranha plant in the safe zone while teleporting
+                if (MemoryManager.getInstance().getGameMapMemory().get(0).at(nextLocation.x(), nextLocation.y())
+                        .getActor() instanceof PiranhaPlant) {
+                    MemoryManager.getInstance().getGameMapMemory().get(0).removeActor(
+                            MemoryManager.getInstance().getGameMapMemory().get(0).at(nextLocation.x(), nextLocation.y())
+                                    .getActor());
+                }
             }
             // player on lava zone and wants to move to safe zone
             if (actor.hasCapability(ON_LAVA_ZONE)) {
